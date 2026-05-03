@@ -14,7 +14,7 @@ protected:
 
 public:
     AcademicEntity(string id, string name, string email);
-    virtual void displayProfile() = 0;
+    virtual void displayProfile() = 0;//abstarct
     string getId();
     string getName();
     string getEmail();
