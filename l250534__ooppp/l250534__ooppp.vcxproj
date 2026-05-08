@@ -125,9 +125,11 @@
   <ItemGroup>
     <ClCompile Include="academicEntity.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Teacher.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="academicEntity.h" />
+    <ClInclude Include="Teacher.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
