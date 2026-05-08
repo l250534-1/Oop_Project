@@ -31,7 +31,7 @@ double ExchangeStudent::calculateGPA()
 void ExchangeStudent::viewTranscript() {
     cout <<  endl;
     cout << "  TRANSCRIPT: " << name << endl;
-    cout << "  (Exchange — Pass/Fail only)" << endl;
+    cout << "  (Exchange : Pass/Fail only)" << endl;
     cout << endl;
     if (resultCount == 0) 
     {
