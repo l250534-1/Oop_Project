@@ -14,7 +14,8 @@ ExchangeStudent::ExchangeStudent(string id, string name, string email)
     resultCount = 0;
 }
 
-void ExchangeStudent::addResult(string passFail) {
+void ExchangeStudent::addResult(string passFail) 
+{
     if (resultCount < 20)
     {
         results[resultCount] = passFail;
@@ -22,7 +23,8 @@ void ExchangeStudent::addResult(string passFail) {
     }
 }
 
-double ExchangeStudent::calculateGPA() { 
+double ExchangeStudent::calculateGPA() 
+{ 
     return 0.0;
 }
 
