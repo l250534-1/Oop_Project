@@ -1,6 +1,5 @@
-#ifndef ACADEMICENTITY_H
-#define ACADEMICENTITY_H
 
+#pragma once
 #include <string>
 using namespace std;
 
@@ -20,4 +19,4 @@ public:
     virtual ~AcademicEntity();
 };
 
-#endif
+

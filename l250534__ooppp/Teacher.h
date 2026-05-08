@@ -1,6 +1,6 @@
 
-#ifndef TEACHER_H
-#define TEACHER_H
+
+#pragma once
 
 #include "academicEntity.h"
 #include <string>          
@@ -25,4 +25,4 @@ public:
     string getAssignedCourse(int index);
 };
 
-#endif
+

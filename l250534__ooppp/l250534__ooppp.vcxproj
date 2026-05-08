@@ -124,11 +124,19 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="academicEntity.cpp" />
+    <ClCompile Include="ExchangeStudent.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="RegularStudent.cpp" />
+    <ClCompile Include="ScholarshipStudent.cpp" />
+    <ClCompile Include="Student.cpp" />
     <ClCompile Include="Teacher.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="academicEntity.h" />
+    <ClInclude Include="ExchangeStudent.h" />
+    <ClInclude Include="RegularStudent.h" />
+    <ClInclude Include="ScholarshipStudent.h" />
+    <ClInclude Include="Student.h" />
     <ClInclude Include="Teacher.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
