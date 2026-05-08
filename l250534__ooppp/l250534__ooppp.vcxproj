@@ -125,8 +125,10 @@
   <ItemGroup>
     <ClCompile Include="academicEntity.cpp" />
     <ClCompile Include="Assessment.cpp" />
+    <ClCompile Include="Exam.cpp" />
     <ClCompile Include="ExchangeStudent.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Quiz.cpp" />
     <ClCompile Include="RegularStudent.cpp" />
     <ClCompile Include="ScholarshipStudent.cpp" />
     <ClCompile Include="Student.cpp" />
@@ -135,7 +137,9 @@
   <ItemGroup>
     <ClInclude Include="academicEntity.h" />
     <ClInclude Include="Assessment.h" />
+    <ClInclude Include="Exam.h" />
     <ClInclude Include="ExchangeStudent.h" />
+    <ClInclude Include="Quiz.h" />
     <ClInclude Include="RegularStudent.h" />
     <ClInclude Include="ScholarshipStudent.h" />
     <ClInclude Include="Student.h" />
