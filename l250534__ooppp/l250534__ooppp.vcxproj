@@ -136,8 +136,10 @@
     <ClCompile Include="Quiz.cpp" />
     <ClCompile Include="RegularStudent.cpp" />
     <ClCompile Include="ScholarshipStudent.cpp" />
+    <ClCompile Include="Section.cpp" />
     <ClCompile Include="Student.cpp" />
     <ClCompile Include="Teacher.cpp" />
+    <ClCompile Include="Venue.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="academicEntity.h" />
@@ -152,8 +154,10 @@
     <ClInclude Include="Quiz.h" />
     <ClInclude Include="RegularStudent.h" />
     <ClInclude Include="ScholarshipStudent.h" />
+    <ClInclude Include="Section.h" />
     <ClInclude Include="Student.h" />
     <ClInclude Include="Teacher.h" />
+    <ClInclude Include="Venue.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
