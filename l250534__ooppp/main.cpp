@@ -58,4 +58,16 @@ int main()
     //double getMaxScore();
     //double getWeightage();
     //return 0;
+
+
+    r1.enrollinCourse("CS200");
+    r1.enrollinCourse("SE101");
+    cout<<  r1.getName();
+    for (int i = 0; i < r1.getEnrolledCount(); i++)
+    {
+         cout   << r1.getEnrolledCourse(i)
+            << endl;
+    }
+
+
 }
