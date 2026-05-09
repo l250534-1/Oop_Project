@@ -1,6 +1,7 @@
 #pragma once
 #include "Course.h"
 
+
 class LabCourse : public Course {
 private:
     bool requiresComputers;

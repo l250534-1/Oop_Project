@@ -8,6 +8,7 @@ CoreCourse::CoreCourse(string courseId, string title, string teacherId)
 double CoreCourse::calculateFinalGrade() {
     double total = 0;
     for (int i = 0; i < assessmentCount; i++)
+
         total += assessments[i]->calculateWeightedScore();//declared in assssment.h(abstract)
     return total;
 }
