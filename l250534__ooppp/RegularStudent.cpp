@@ -1,3 +1,5 @@
+// Regular Student : The standard data model with traditional grading.
+
 #include "RegularStudent.h"
 #include <iostream>
 using namespace std;
@@ -39,7 +41,7 @@ void RegularStudent::viewTranscript() {
     cout << "  TRANSCRIPT: " << name << endl;
     cout << endl;
     if (gradeCount == 0) {
-        cout << "  No grades yet." << endl;
+    cout << "  No grades yet." << endl;
     }
     else {
         for (int i = 0; i < gradeCount; i++)

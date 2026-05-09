@@ -1,3 +1,4 @@
+//Scholarship Student: Must maintain a minimum GPA; otherwise, their status flag changes to "Probation."
 #include "ScholarshipStudent.h"
 #include <iostream>
 using namespace std;
@@ -5,7 +6,7 @@ using namespace std;
 ScholarshipStudent::ScholarshipStudent()
     : Student("", "", "", "Scholarship") 
 {
-    minGPA = 2.5;
+    minGPA = 2.0;
     gradeCount = 0;
     status = "Active";
 }

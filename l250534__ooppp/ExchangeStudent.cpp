@@ -1,3 +1,5 @@
+//Exchange Student: They don't have a GPA; they only receive "Pass/Fail" credits.
+
 #include "ExchangeStudent.h"
 #include <iostream>
 using namespace std;
