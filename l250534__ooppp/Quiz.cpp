@@ -11,6 +11,6 @@ double Quiz::calculateWeightedScore() {
 }
 
 void Quiz::display() {
-    cout << "  [Quiz]       " << rawScore << "/" << maxScore
+    cout << "  Quiz       " << rawScore << "/" << maxScore
         << "  Weighted: " << calculateWeightedScore() << "%" << endl;
 }
