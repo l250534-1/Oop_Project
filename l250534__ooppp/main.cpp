@@ -1,8 +1,10 @@
 #include "RegularStudent.h"
 #include "ScholarshipStudent.h"
 #include "ExchangeStudent.h"
-#include "Assignment.h"
-
+/*#include "Assignment.h"*/
+//#include "Quiz.h"
+#include "Exam.h"
+//#include<"Assessment.h">
 #include <iostream>
 using namespace std;
 
@@ -36,9 +38,24 @@ int main()
 
     e1.displayProfile();
     e1.viewTranscript();
-    Assignment a1(50, 100, 10);
+    /*Assignment a1(50, 100, 10);
     a1.calculateWeightedScore();
-    a1.display();
+    a1.display();*/
+ /*  Quiz a2(50, 100, 10);
+    a2.calculateWeightedScore();
+    a2.display();*/
+   Exam a3(50, 100, 10);
+    a3.calculateWeightedScore();
+    a3.display();
 
-    return 0;
+
+
+    //Assessment a("Exam", 50,100,10);
+    //virtual double calculateWeightedScore() = 0;//abstarct class
+    //virtual void   display() = 0;
+    //string getType();
+    //double getRawScore();
+    //double getMaxScore();
+    //double getWeightage();
+    //return 0;
 }
