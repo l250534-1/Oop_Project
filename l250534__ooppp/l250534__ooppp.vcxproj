@@ -126,6 +126,7 @@
     <ClCompile Include="academicEntity.cpp" />
     <ClCompile Include="Assessment.cpp" />
     <ClCompile Include="Assignment.cpp" />
+    <ClCompile Include="Course.cpp" />
     <ClCompile Include="Exam.cpp" />
     <ClCompile Include="ExchangeStudent.cpp" />
     <ClCompile Include="main.cpp" />
@@ -139,6 +140,7 @@
     <ClInclude Include="academicEntity.h" />
     <ClInclude Include="Assessment.h" />
     <ClInclude Include="Assignment.h" />
+    <ClInclude Include="Course.h" />
     <ClInclude Include="Exam.h" />
     <ClInclude Include="ExchangeStudent.h" />
     <ClInclude Include="Quiz.h" />
