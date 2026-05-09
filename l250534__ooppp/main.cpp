@@ -5,6 +5,7 @@
 //#include "Quiz.h"
 #include "Exam.h"
 //#include<"Assessment.h">
+#include"Venue.h"
 #include <iostream>
 using namespace std;
 
@@ -60,14 +61,30 @@ int main()
     //return 0;
 
 
-    r1.enrollinCourse("CS200");
+   /* r1.enrollinCourse("CS200");
     r1.enrollinCourse("SE101");
     cout<<  r1.getName();
     for (int i = 0; i < r1.getEnrolledCount(); i++)
     {
          cout   << r1.getEnrolledCourse(i)
             << endl;
+    }*/
+
+    Venue v1("Lab-101", 40, true);
+
+    v1.display();
+
+    cout << endl;
+
+    if (v1.canAccommodate(35))
+    {
+        cout << "Room can accommodate students." << endl;
     }
+    else
+    {
+        cout << "Room is too small." << endl;
+    }
+
 
 
 }
