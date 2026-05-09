@@ -128,6 +128,7 @@
     <ClCompile Include="Assignment.cpp" />
     <ClCompile Include="CoreCourse.cpp" />
     <ClCompile Include="Course.cpp" />
+    <ClCompile Include="DatabaseManager.cpp" />
     <ClCompile Include="ElectiveCourse.cpp" />
     <ClCompile Include="Exam.cpp" />
     <ClCompile Include="ExchangeStudent.cpp" />
@@ -147,6 +148,7 @@
     <ClInclude Include="Assignment.h" />
     <ClInclude Include="CoreCourse.h" />
     <ClInclude Include="Course.h" />
+    <ClInclude Include="DatabaseManager.h" />
     <ClInclude Include="ElectiveCourse.h" />
     <ClInclude Include="Exam.h" />
     <ClInclude Include="ExchangeStudent.h" />
