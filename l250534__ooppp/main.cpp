@@ -1,6 +1,7 @@
 #include "RegularStudent.h"
 #include "ScholarshipStudent.h"
 #include "ExchangeStudent.h"
+#include "Assignment.h"
 
 #include <iostream>
 using namespace std;
@@ -35,6 +36,9 @@ int main()
 
     e1.displayProfile();
     e1.viewTranscript();
+    Assignment a1(50, 100, 10);
+    a1.calculateWeightedScore();
+    a1.display();
 
     return 0;
 }

@@ -12,5 +12,5 @@ double Assignment::calculateWeightedScore() {
 
 void Assignment::display() {
     cout << "  [Assignment] " << rawScore << "/" << maxScore
-        << "  Weighted: " << calculateWeightedScore() << "%" << endl;
+        << "  Weightage: " << calculateWeightedScore() << "%" << endl;
 }
