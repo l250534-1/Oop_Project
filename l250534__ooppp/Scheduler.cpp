@@ -62,7 +62,12 @@ bool Scheduler::isVenueBooked(string venueId, string timeSlot)
 
 string Scheduler::suggestNextSlot(string venueId)
 {
-
+	for (int i = 0; i < timeSlotCount; i++) 
+	{
+		if (!isVenueBooked(venueId, timeSlots[i]))
+			return timeSlots[i];
+	}
+	return "No slots available";
 }
 
 void Scheduler::generateExamSchedule(Course* courses[], int courseCount)
