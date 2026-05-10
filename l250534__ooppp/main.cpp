@@ -110,7 +110,15 @@ int main()
         "PassFail"
     );
 
-    cout << "Students saved" ;
+    cout << "Students saved";
+        Student * students[100];
+
+    int studentCount = 0;
+
+    db.loadStudents(students, studentCount);
+
+    cout << endl;
+    cout << "Loaded Students";
 
 
 }
