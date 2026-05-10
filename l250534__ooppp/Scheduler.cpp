@@ -43,7 +43,10 @@ void Scheduler::addSection(Section s)
 }
 void Scheduler::addVenue(Venue v) 
 {
-
+	if (venueCount < 20) {
+		venues[venueCount] = v;
+		venueCount++;
+	}
 }
 
 bool Scheduler::isVenueBooked(string venueId, string timeSlot)
