@@ -35,7 +35,11 @@ Scheduler::Scheduler()
 }
 void Scheduler::addSection(Section s)
 {
-
+	if (sectionCount < 100) 
+	{
+		sections[sectionCount] = s;
+		sectionCount++;
+	}
 }
 void Scheduler::addVenue(Venue v) 
 {
