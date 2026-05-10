@@ -167,5 +167,12 @@ int main()
     {
         delete students[i];
     }
+    Teacher teachers[50];
 
+    int teacherCount = 0;
+
+    db.loadTeachers(teachers, teacherCount);
+
+    cout << endl;
+    cout << "Loaded Teachers";
 }
