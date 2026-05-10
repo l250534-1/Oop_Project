@@ -120,5 +120,11 @@ int main()
     cout << endl;
     cout << "Loaded Students";
 
+    
+
+    db.saveVenue(v1);
+
+    cout << "Venue saved";
+
 
 }
