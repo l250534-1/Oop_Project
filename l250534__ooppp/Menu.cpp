@@ -52,3 +52,12 @@ double Menu::getDoubleInput(string prompt) {
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
     }
 }
+string Menu::getStringInput(string prompt) {
+    string value;
+    while (true) {
+        cout << prompt;
+        getline(cin, value);
+        if (!value.empty()) return value;
+        cout << "  ERROR: Input cannot be empty!" << endl;
+    }
+}
