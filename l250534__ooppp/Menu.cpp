@@ -39,3 +39,16 @@ int Menu::getIntInput(string p) {
         cin.ignore();
     }
 }
+double Menu::getDoubleInput(string prompt) {
+    double value;
+    while (true) {
+        cout << prompt;
+        if (cin >> value) {
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            return value;
+        }
+        cout << "  ERROR: Please enter a valid number!" << endl;
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    }
+}
