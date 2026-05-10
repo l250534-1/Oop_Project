@@ -1,0 +1,12 @@
+#pragma once
+#include "DatabaseManager.h"
+#include "Scheduler.h"
+#include "CoreCourse.h"
+#include "ElectiveCourse.h"
+#include "LabCourse.h"
+#include "RegularStudent.h"
+#include "ScholarshipStudent.h"
+#include "ExchangeStudent.h"
+#include "Exam.h"
+#include "Quiz.h"
+#include "Assignment.h"
