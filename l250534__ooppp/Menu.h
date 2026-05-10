@@ -40,4 +40,5 @@ public:
     string  getStringInput(string p);
     bool    isIdUnique(string id);
     bool    isRoomIdUnique(string roomId);
+    Teacher* findTeacher(string id);
 };
