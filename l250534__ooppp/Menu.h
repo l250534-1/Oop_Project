@@ -11,6 +11,8 @@
 #include "Quiz.h"
 #include "Assignment.h"
 
+
+
 class Menu {
 private:
     Teacher teachers[50];
@@ -27,4 +29,11 @@ private:
     int venueCount;
     Section sections[100];
     int sectionCount;
+
+    DatabaseManager db;
+    Scheduler scheduler;
+public:
+    Menu();
+  
+
 };
