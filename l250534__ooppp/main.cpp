@@ -6,6 +6,7 @@
 #include "Exam.h"
 //#include<"Assessment.h">
 #include"Venue.h"
+#include "DatabaseManager.h"
 #include <iostream>
 using namespace std;
 
@@ -84,7 +85,32 @@ int main()
     {
         cout << "Room is too small." << endl;
     }
+    DatabaseManager db;
+    db.saveStudent(
+        r1.getId(),
+        r1.getName(),
+        r1.getType(),
+        r1.calculateGPA(),
+        "None"
+    );
 
+    db.saveStudent(
+        s1.getId(),
+        s1.getName(),
+        s1.getType(),
+        s1.calculateGPA(),
+        "2.5"
+    );
+
+    db.saveStudent(
+        e1.getId(),
+        e1.getName(),
+        e1.getType(),
+        e1.calculateGPA(),
+        "PassFail"
+    );
+
+    cout << "Students saved" ;
 
 
 }
