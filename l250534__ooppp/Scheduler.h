@@ -11,7 +11,7 @@ private:
     int     sectionCount;
     Venue   venues[20];
     int     venueCount;
-    string  timeSlots[10];
+    string  timeSlots[20];
     int     timeSlotCount;
 
 public:

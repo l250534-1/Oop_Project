@@ -30,7 +30,7 @@ Scheduler::Scheduler()
 	timeSlots[15] = "Thurs 14:30-17:30";
 	timeSlots[16] = "Fri    8:00-11:00";
 	timeSlots[17] = "Fri    14:30-16:30";
-	timeSlotCount = 17;
+	timeSlotCount = 18;
 
 }
 void Scheduler::addSection(Section s)
