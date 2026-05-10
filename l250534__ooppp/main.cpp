@@ -8,6 +8,10 @@
 #include"Venue.h"
 #include"Teacher.h"
 #include "DatabaseManager.h"
+#include "Scheduler.h"
+#include "CoreCourse.h"
+#include "ElectiveCourse.h"
+#include "LabCourse.h"
 #include <iostream>
 using namespace std;
 
@@ -180,4 +184,63 @@ int main()
         teachers[i].displayProfile();
         cout << endl;
     }
+
+
+
+    Scheduler sch;
+
+    Venue v2("A-301", 50, false);
+    Venue v3("Lab-201", 40, true);
+
+    sch.addVenue(v2);
+    sch.addVenue(v3);
+
+    CoreCourse c1("CS200", "OOP", "T-101");
+    ElectiveCourse c2("AI201", "Artificial Intelligence", "T-102");
+    LabCourse c3("CS210L", "OOP Lab", "T-101");
+
+    for (int i = 0; i < 35; i++)
+    {
+        c1.enrollStudent("S");
+        c2.enrollStudent("S");
+        c3.enrollStudent("S");
+    }
+
+    Course* courses[3];
+
+    courses[0] = &c1;
+    courses[1] = &c2;
+    courses[2] = &c3;
+
+    Section sec1("SEC-A", "CS200", "T-101");
+    Section sec2("SEC-B", "AI201", "T-102");
+    Section sec3("SEC-C", "CS210L", "T-101");
+
+    sch.addSection(sec1);
+    sch.addSection(sec2);
+    sch.addSection(sec3);
+
+    sch.generateExamSchedule(courses, 3);
+
+    cout << endl;
+
+    sch.displaySchedule();
+
+    sch.saveSchedule();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
