@@ -138,5 +138,11 @@ int main()
         venues[i].display();
         cout << endl;
     }
+    for (int i = 0; i < studentCount; i++)
+    {
+        students[i]->displayProfile();
+        cout << endl;
+    }
+
 
 }
