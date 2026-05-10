@@ -94,3 +94,9 @@ Teacher* Menu::findTeacher(string id)
             return &teachers[i];
     return nullptr;
 }
+
+Course* Menu::findCourse(string id) {
+    for (int i = 0; i < courseCount; i++)
+        if (courses[i]->getCourseId() == id) return courses[i];
+    return nullptr;
+}

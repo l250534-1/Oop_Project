@@ -41,4 +41,5 @@ public:
     bool    isIdUnique(string id);
     bool    isRoomIdUnique(string roomId);
     Teacher* findTeacher(string id);
+    Course* findCourse(string id);
 };
