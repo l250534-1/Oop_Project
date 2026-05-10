@@ -133,5 +133,10 @@ int main()
 
     cout << endl;
     cout << "Loaded Venues";
+    for (int i = 0; i < venueCount; i++)
+    {
+        venues[i].display();
+        cout << endl;
+    }
 
 }
