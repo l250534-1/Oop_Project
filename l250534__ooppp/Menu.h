@@ -35,5 +35,5 @@ private:
 public:
     Menu();
     ~Menu();
-
+    int getIntInput(string p);
 };

@@ -25,3 +25,17 @@ Menu::~Menu() {
     for (int i = 0; i < courseCount; i++)
         delete courses[i];
 }
+int Menu::getIntInput(string p) {
+    int value;
+    while (true) {
+        cout << p;
+        if (cin >> value) 
+        {
+            cin.ignore();
+            return value;
+        }
+        cout << "  ERROR: Please enter a valid number!" << endl;
+        cin.clear();
+        cin.ignore();
+    }
+}
