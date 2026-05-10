@@ -10,3 +10,21 @@
 #include "Exam.h"
 #include "Quiz.h"
 #include "Assignment.h"
+
+class Menu {
+private:
+    Teacher teachers[50];
+    int teacherCount;
+    RegularStudent regularStudents[50];
+    int regularCount;
+    ScholarshipStudent scholarshipStudents[50];
+    int scholarshipCount;
+    ExchangeStudent exchangeStudents[50];
+    int exchangeCount;
+    Course* courses[50];
+    int courseCount;
+    Venue venues[20];
+    int venueCount;
+    Section sections[100];
+    int sectionCount;
+};
