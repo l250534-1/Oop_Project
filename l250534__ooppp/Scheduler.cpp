@@ -132,4 +132,14 @@ void Scheduler::saveSchedule()
 
 void Scheduler::displaySchedule() 
 {
+	if (sectionCount == 0) 
+	{
+		cout << "  No schedule generated yet." << endl;
+		return;
+	}
+	cout << "\t\tEXAM SCHEDULE\t\t" << endl;
+	for (int i = 0; i < sectionCount; i++) {
+		sections[i].display();
+		cout << endl;
+	}
 }
