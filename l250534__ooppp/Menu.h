@@ -42,4 +42,8 @@ public:
     bool    isRoomIdUnique(string roomId);
     Teacher* findTeacher(string id);
     Course* findCourse(string id);
+    RegularStudent* findRegular(string id);
+    ScholarshipStudent* findScholarship(string id);
+    ExchangeStudent* findExchange(string id);
+
 };

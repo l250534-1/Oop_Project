@@ -97,6 +97,30 @@ Teacher* Menu::findTeacher(string id)
 
 Course* Menu::findCourse(string id) {
     for (int i = 0; i < courseCount; i++)
-        if (courses[i]->getCourseId() == id) return courses[i];
+        if (courses[i]->getCourseId() == id) 
+            return courses[i];
+    return nullptr;
+}
+RegularStudent* Menu::findRegular(string id) 
+{
+    for (int i = 0; i < regularCount; i++)
+        if (regularStudents[i].getId() == id) 
+            return &regularStudents[i];
+    return nullptr;
+}
+
+ScholarshipStudent* Menu::findScholarship(string id)
+{
+    for (int i = 0; i < scholarshipCount; i++)
+        if (scholarshipStudents[i].getId() == id) 
+            return &scholarshipStudents[i];
+    return nullptr;
+}
+
+ExchangeStudent* Menu::findExchange(string id)
+{
+    for (int i = 0; i < exchangeCount; i++)
+        if (exchangeStudents[i].getId() == id) 
+            return &exchangeStudents[i];
     return nullptr;
 }
