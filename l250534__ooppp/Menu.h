@@ -36,4 +36,8 @@ public:
     Menu();
     ~Menu();
     int getIntInput(string p);
+    double  getDoubleInput(string p);
+    string  getStringInput(string p);
+    bool    isIdUnique(string id);
+ 
 };
