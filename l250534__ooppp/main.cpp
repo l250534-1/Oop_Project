@@ -6,6 +6,7 @@
 #include "Exam.h"
 //#include<"Assessment.h">
 #include"Venue.h"
+#include"Teacher.h"
 #include "DatabaseManager.h"
 #include <iostream>
 using namespace std;
@@ -144,5 +145,27 @@ int main()
         cout << endl;
     }
 
+    Teacher t1(
+        "T-101",
+        "Dr Ahmed",
+        "ahmed@fast.edu.pk"
+    );
+
+    Teacher t2(
+        "T-102",
+        "Ms Sara",
+        "sara@fast.edu.pk"
+    );
+
+    db.saveTeacher(t1);
+    db.saveTeacher(t2);
+
+    cout << "Teachers saved";
+
+
+    for (int i = 0; i < studentCount; i++)
+    {
+        delete students[i];
+    }
 
 }
