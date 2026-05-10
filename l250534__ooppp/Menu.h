@@ -39,5 +39,5 @@ public:
     double  getDoubleInput(string p);
     string  getStringInput(string p);
     bool    isIdUnique(string id);
- 
+    bool    isRoomIdUnique(string roomId);
 };
