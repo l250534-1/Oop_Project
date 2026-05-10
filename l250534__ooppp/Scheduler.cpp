@@ -72,7 +72,42 @@ string Scheduler::suggestNextSlot(string venueId)
 
 void Scheduler::generateExamSchedule(Course* courses[], int courseCount)
 {
-
+	cout << "  Generating exam schedule..." << endl;
+	for (int i = 0; i < sectionCount; i++)
+	{
+		bool assigned = false;
+		Course* matched = nullptr;
+		for (int c = 0; c < courseCount; c++)
+		{
+			if (courses[c]->getCourseId() == sections[i].getCourseId())
+			{
+				matched = courses[c];
+				break;
+			}
+		}
+		for (int v = 0; v < venueCount; v++) 
+		{
+			if (matched != nullptr)
+			{
+				if (!venues[v].canAccommodate(matched->getStudentCount()))
+					continue;
+				LabCourse* lab = dynamic_cast<LabCourse*>(matched);
+				if (lab != nullptr && !venues[v].getHasComputers())
+					continue;
+			}
+			string slot = suggestNextSlot(venues[v].getRoomId());
+			if (slot == "No slots available") 
+				continue;
+			sections[i].assignVenue(venues[v].getRoomId(), slot);
+			assigned = true;
+			break;
+		}
+		if (!assigned) {
+			cout << "  WARNING: No venue for section "
+				<< sections[i].getSectionId() << endl;
+		}
+	}
+	cout << "\t\tSchedule generation complete!" << endl;
 }
 
 void Scheduler::saveSchedule()
