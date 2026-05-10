@@ -175,4 +175,9 @@ int main()
 
     cout << endl;
     cout << "Loaded Teachers";
+    for (int i = 0; i < teacherCount; i++)
+    {
+        teachers[i].displayProfile();
+        cout << endl;
+    }
 }
