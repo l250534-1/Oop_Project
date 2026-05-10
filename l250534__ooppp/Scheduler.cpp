@@ -51,7 +51,13 @@ void Scheduler::addVenue(Venue v)
 
 bool Scheduler::isVenueBooked(string venueId, string timeSlot)
 {
-
+	for (int i = 0; i < sectionCount; i++)
+	{
+		if (sections[i].getVenueId() == venueId &&
+			sections[i].getTimeSlot() == timeSlot)
+			return true;
+	}
+	return false;
 }
 
 string Scheduler::suggestNextSlot(string venueId)
