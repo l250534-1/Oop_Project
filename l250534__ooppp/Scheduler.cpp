@@ -112,7 +112,22 @@ void Scheduler::generateExamSchedule(Course* courses[], int courseCount)
 
 void Scheduler::saveSchedule()
 {
-
+	ofstream file("exam_schedule.txt");
+	if (!file.is_open())
+	{
+		cout << "  ERROR: Cannot save schedule!" << endl;
+		return;
+	}
+	file << "\t\t\t EXAM SCHEDULE\t\t\t\n";
+	for (int i = 0; i < sectionCount; i++) {
+		file << "Section : " << sections[i].getSectionId() << "\n";
+		file << "Course  : " << sections[i].getCourseId() << "\n";
+		file << "Venue   : " << sections[i].getVenueId() << "\n";
+		file << "Time    : " << sections[i].getTimeSlot() << "\n";
+		cout << endl;
+	}
+	file.close();
+	cout << "  Schedule saved to exam_schedule.txt!" << endl;
 }
 
 void Scheduler::displaySchedule() 
