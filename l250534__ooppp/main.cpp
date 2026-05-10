@@ -125,6 +125,13 @@ int main()
     db.saveVenue(v1);
 
     cout << "Venue saved";
+    Venue venues[20];
 
+    int venueCount = 0;
+
+    db.loadVenues(venues, venueCount);
+
+    cout << endl;
+    cout << "Loaded Venues";
 
 }
