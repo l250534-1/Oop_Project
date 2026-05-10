@@ -34,6 +34,6 @@ private:
     Scheduler scheduler;
 public:
     Menu();
-  
+    ~Menu();
 
 };

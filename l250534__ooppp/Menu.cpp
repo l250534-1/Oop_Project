@@ -21,3 +21,7 @@ Menu::Menu()
     for (int i = 0; i < sectionCount; i++)
         scheduler.addSection(sections[i]);
 }
+Menu::~Menu() {
+    for (int i = 0; i < courseCount; i++)
+        delete courses[i];
+}
