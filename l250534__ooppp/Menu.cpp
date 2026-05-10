@@ -39,25 +39,58 @@ int Menu::getIntInput(string p) {
         cin.ignore();
     }
 }
-double Menu::getDoubleInput(string prompt) {
+double Menu::getDoubleInput(string p) {
     double value;
-    while (true) {
-        cout << prompt;
-        if (cin >> value) {
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    while (true)
+    {
+        cout << p;
+        if (cin >> value)
+        {
+            cin.ignore();
             return value;
         }
-        cout << "  ERROR: Please enter a valid number!" << endl;
+        cout << "ERROR: Please enter a valid number!" << endl;
         cin.clear();
-        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        cin.ignore();
     }
 }
-string Menu::getStringInput(string prompt) {
+string Menu::getStringInput(string p) {
     string value;
     while (true) {
-        cout << prompt;
+        cout << p;
         getline(cin, value);
-        if (!value.empty()) return value;
-        cout << "  ERROR: Input cannot be empty!" << endl;
+        if (!value.empty()) 
+            return value;
+        cout << "ERROR: Input cannot be empty!" << endl;
     }
+}
+bool Menu::isIdUnique(string id)
+{
+    for (int i = 0; i < teacherCount; i++)
+        if (teachers[i].getId() == id) 
+            return false;
+    for (int i = 0; i < regularCount; i++)
+        if (regularStudents[i].getId() == id) 
+            return false;
+    for (int i = 0; i < scholarshipCount; i++)
+        if (scholarshipStudents[i].getId() == id)
+            return false;
+    for (int i = 0; i < exchangeCount; i++)
+        if (exchangeStudents[i].getId() == id) 
+            return false;
+    return true;
+}
+
+bool Menu::isRoomIdUnique(string roomId) {
+    for (int i = 0; i < venueCount; i++)
+        if (venues[i].getRoomId() == roomId) return false;
+    return true;
+}
+
+Teacher* Menu::findTeacher(string id)
+{
+    for (int i = 0; i < teacherCount; i++)
+        if (teachers[i].getId() == id)
+            return &teachers[i];
+    return nullptr;
 }
