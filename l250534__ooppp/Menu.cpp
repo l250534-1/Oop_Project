@@ -271,3 +271,56 @@ void Menu::viewAllTeachers()
     }
     system("pause");
 }
+
+
+void Menu::addCourse() {
+
+    cout << "\t\tAdd Course\t\t";
+
+    if (courseCount >= 50)
+    {
+        cout << "ERROR: Maximum courses reached!" << endl;
+        system("pause");
+        return;
+    }
+
+    string id;
+    while (true)
+    {
+        id = getStringInput("Enter Course ID  : ");
+        if (findCourse(id) == nullptr)
+            break;
+        cout << "ERROR: Course ID already exists!" << endl;
+    }
+
+    string title = getStringInput("Enter Title      : ");
+    string teacherId = getStringInput("Enter Teacher ID : ");
+
+    if (findTeacher(teacherId) == nullptr)
+        cout << "WARNING: Teacher ID not found in system." << endl;
+
+    cout << "\nCourse Type:" << endl;
+    cout << "1 = Core (3hr exam)" << endl;
+    cout << "2 = Elective (2hr exam)" << endl;
+    cout << "3 = Lab (no exam, needs computers)" << endl;
+
+    int type = 0;
+    while (type < 1 || type > 3)
+    {
+        type = getIntInput("  Enter type (1-3): ");
+        if (type < 1 || type > 3)
+            cout << "  ERROR: Enter 1, 2, or 3 only!" << endl;
+    }
+
+    if (type == 1)
+        courses[courseCount] = new CoreCourse(id, title, teacherId);
+    else if (type == 2)
+        courses[courseCount] = new ElectiveCourse(id, title, teacherId);
+    else
+        courses[courseCount] = new LabCourse(id, title, teacherId);
+
+    courseCount++;
+    cout << "\n  Course added successfully!" << endl;
+    system("pause");
+}
+
