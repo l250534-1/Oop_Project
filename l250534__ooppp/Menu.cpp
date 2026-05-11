@@ -762,3 +762,30 @@ void Menu::scheduleMenu() {
         else    cout << "\n  ERROR: Invalid choice!" << endl;
     }
 }
+
+void Menu::mainMenu()
+{
+    int choice = 0;
+    while (choice != 5) {
+
+        cout << "Academic Management System";
+        cout << "  1. Student Menu" << endl;
+        cout << "  2. Teacher Menu" << endl;
+        cout << "  3. Course Menu" << endl;
+        cout << "  4. Schedule Menu" << endl;
+        cout << "  5. Exit" << endl;
+        choice = getIntInput("\n  Enter choice (1-5): ");
+        if (choice == 1)
+            studentMenu();
+        else if (choice == 2)
+            teacherMenu();
+        else if (choice == 3)
+            courseMenu();
+        else if (choice == 4)
+            scheduleMenu();
+        else if (choice == 5)
+            cout << "\n  Goodbye!" << endl;
+        else
+            cout << "\n  ERROR: Invalid choice! Enter 1-5." << endl;
+    }
+}
