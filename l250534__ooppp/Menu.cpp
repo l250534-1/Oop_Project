@@ -86,16 +86,25 @@ double Menu::getDoubleInput(string p)
 
     return value;
 }
-string Menu::getStringInput(string p) {
+   
+string Menu::getStringInput(string p)
+{
     string value;
-    while (true) {
+    do
+    {
         cout << p;
         getline(cin, value);
-        if (!value.empty()) 
-            return value;
-        cout << "ERROR: Input cannot be empty!" << endl;
-    }
+
+        if (value.empty())
+        {
+            cout << "ERROR: Input cannot be empty!" << endl;
+        }
+
+    } while (value.empty());
+    return value;
 }
+
+
 bool Menu::isIdUnique(string id)
 {
     for (int i = 0; i < teacherCount; i++)
