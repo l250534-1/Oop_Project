@@ -387,3 +387,37 @@ void Menu::addVenue() {
     cout << "\n  Venue added successfully!" << endl;
     system("pause");
 }
+
+
+void Menu::addSection() {
+
+    cout << "\t\tAdd Section\t\t";
+
+    if (sectionCount >= 100) {
+        cout << "  ERROR: Maximum sections reached!" << endl;
+        system("pause");
+        return;
+    }
+
+    if (courseCount == 0) {
+        cout << "  ERROR: No courses exist. Add a course first!" << endl;
+        system("pause");
+        return;
+    }
+
+    string sectionId = getStringInput("  Enter Section ID  : ");
+    string courseId = getStringInput("  Enter Course ID   : ");
+    string teacherId = getStringInput("  Enter Teacher ID  : ");
+
+    if (findCourse(courseId) == nullptr)
+        cout << "  WARNING: Course ID not found in system." << endl;
+    if (findTeacher(teacherId) == nullptr)
+        cout << "  WARNING: Teacher ID not found in system." << endl;
+
+    sections[sectionCount] = Section(sectionId, courseId, teacherId);
+    db.saveSection(sections[sectionCount]);
+    scheduler.addSection(sections[sectionCount]);
+    sectionCount++;
+    cout << "\n  Section added!" << endl;
+    system("pause");
+}
