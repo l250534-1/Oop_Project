@@ -323,4 +323,25 @@ void Menu::addCourse() {
     cout << "\n  Course added successfully!" << endl;
     system("pause");
 }
+    
+
+void Menu::viewAllCourses() {
+
+    cout << "All Courses" << endl;
+    if (courseCount == 0)
+    {
+        cout << "No courses found." << endl;
+    }
+    else {
+        for (int i = 0; i < courseCount; i++) {
+            cout << "  ID     : " << courses[i]->getCourseId() << endl;
+            cout << "  Title  : " << courses[i]->getTitle() << endl;
+            cout << "  Type   : " << courses[i]->getCourseType() << endl;
+            cout << "  Teacher: " << courses[i]->getTeacherId() << endl;
+            cout << "  Students enrolled: " << courses[i]->getStudentCount() << endl;
+            cout << endl;
+        }
+    }
+    system("pause");
+}
 
