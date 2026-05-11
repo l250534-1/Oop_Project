@@ -727,7 +727,7 @@ void Menu::viewSchedule()
 }
 
 
-
+                                              //Student Menu
 void Menu::studentMenu() {
     int choice = 0;
     while (choice != 5) {
@@ -753,7 +753,7 @@ void Menu::studentMenu() {
             cout << "\n ERROR: Invalid choice!" << endl;
     }
 }
-
+                                                       //Teacher Menu
 void Menu::teacherMenu() {
     int choice = 0;
     while (choice != 5) {
