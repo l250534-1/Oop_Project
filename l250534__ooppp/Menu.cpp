@@ -563,3 +563,39 @@ void Menu::enterMarks() {
     system("pause");
 }
 
+void Menu::viewTranscript() {
+
+    cout << "View Transcript";
+
+    string id = getStringInput("Enter Student ID: ");
+
+    RegularStudent* r = findRegular(id);
+    if (r)
+    {
+        r->viewTranscript();
+        system("pause");
+        return;
+
+    }
+
+    ScholarshipStudent* s = findScholarship(id);
+    if (s)
+    {
+        s->viewTranscript();
+        system("pause");
+        return;
+    }
+
+    ExchangeStudent* e = findExchange(id);
+    if (e)
+    {
+
+        e->viewTranscript();
+        system("pause");
+        return;
+    }
+
+
+    cout << "  ERROR: Student not found!" << endl;
+    system("pause");
+}

@@ -55,4 +55,5 @@ public:
     void addSection();
     void registerStudentToCourse();
     void enterMarks();
+    void viewTranscript();
 };
