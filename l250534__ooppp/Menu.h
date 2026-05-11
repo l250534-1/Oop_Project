@@ -46,4 +46,5 @@ public:
     ScholarshipStudent* findScholarship(string id);
     ExchangeStudent* findExchange(string id);
     void addStudent();
+    void viewAllStudents();
 };

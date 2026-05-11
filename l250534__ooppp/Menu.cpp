@@ -189,3 +189,33 @@ void Menu::addStudent() {
     }
     system("pause");
 }
+
+
+void Menu::viewAllStudents() {
+
+    cout << "\t\tAdd Teacher\t\t" << endl;
+    int total = regularCount + scholarshipCount + exchangeCount;
+    if (total == 0)
+    {
+        cout << "  No students found." << endl;
+    }
+    else
+    {
+        for (int i = 0; i < regularCount; i++)
+        {
+            regularStudents[i].displayProfile();
+            cout << endl;
+        }
+        for (int i = 0; i < scholarshipCount; i++)
+        {
+            scholarshipStudents[i].displayProfile();
+            cout << endl;
+        }
+        for (int i = 0; i < exchangeCount; i++)
+        {
+            exchangeStudents[i].displayProfile();
+            cout << endl;
+        }
+    }
+    system("pause");
+}
