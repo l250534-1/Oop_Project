@@ -47,4 +47,6 @@ public:
     ExchangeStudent* findExchange(string id);
     void addStudent();
     void viewAllStudents();
+    void addTeacher();
+    void viewAllTeachers();
 };
