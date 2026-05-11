@@ -35,19 +35,17 @@ int Menu::getIntInput(string p)
     {
         valid = true;
         cout << p;
-        if (!(cin >> value))
+        if (!(cin >> value))//special characters entered
         {
             cout << "ERROR: Please enter a valid integer!" << endl;
-
             cin.clear();
             cin.ignore(1000, '\n');
-
             valid = false;
         }
         else if (value < 0)
         {
             cout << "ERROR: Negative values are not allowed!" << endl;
-            cin.ignore(1000, '\n');
+            cin.ignore(1000,'\n');
             valid = false;
         }
         else
@@ -81,7 +79,7 @@ double Menu::getDoubleInput(string p)
         }
         else
         {
-            cin.ignore(1000, '\n');
+            cin.ignore(1000,'\n');
         }
     } while (!valid);
 
@@ -96,7 +94,7 @@ string Menu::getStringInput(string p)
         cout << p;
         getline(cin, value);
 
-        if (value.empty())
+        if (value.empty())//used built in function for string
         {
             cout << "ERROR: Input cannot be empty!" << endl;
         }
@@ -123,9 +121,11 @@ bool Menu::isIdUnique(string id)
     return true;
 }
 
-bool Menu::isRoomIdUnique(string roomId) {
+bool Menu::isRoomIdUnique(string roomId)
+{
     for (int i = 0; i < venueCount; i++)
-        if (venues[i].getRoomId() == roomId) return false;
+        if (venues[i].getRoomId() == roomId) 
+            return false;
     return true;
 }
 
@@ -167,7 +167,7 @@ ExchangeStudent* Menu::findExchange(string id)
     return nullptr;
 }
 void Menu::addStudent() {
-    cout << "\t\tAdd Student\t\t"<<endl;
+    cout << "Add Student"<<endl;
     int total = regularCount + scholarshipCount + exchangeCount;
     if (total >= 150) 
     {
@@ -179,20 +179,20 @@ void Menu::addStudent() {
     string id;
     do
     {
-        id = getStringInput("\tEnter ID : ");
-        if (id[0] == '-')
+        id = getStringInput("Enter ID : ");
+        if (id[0] == '-')//-123 - detects negatve
         {
-            cout << "\tERROR: ID cannot be negative!" << endl;
+            cout << "ERROR: ID cannot be negative!" << endl;
         }
         else if (!isIdUnique(id))
         {
-            cout << "\tERROR: ID already exists! Try another." << endl;
+            cout << "ERROR: ID already exists! Try another." << endl;
         }
 
     } while (id[0] == '-' || !isIdUnique(id));
 
-    string name = getStringInput("\tEnter Name  :");
-    string email = getStringInput("\tEnter Email :");
+    string name = getStringInput("Enter Name  :");
+    string email = getStringInput("Enter Email :");
 
     bool found = false;
     for (int i = 0; i < email.length(); i++)
@@ -205,18 +205,18 @@ void Menu::addStudent() {
     }
     if (!found)
     {
-        cout << "WARNING: Email looks invalid." << endl;
+        cout << "Invalid Email" << endl;
     }
 
     cout << "\nStudent Type:\n" << endl;
-    cout << "  1 = Regular" << endl;
-    cout << "  2 = Scholarship" << endl;
-    cout << "  3 = Exchange" << endl;
+    cout << "1 = Regular" << endl;
+    cout << "2 = Scholarship" << endl;
+    cout << "3 = Exchange" << endl;
 
     int type = 0;
     while (type < 1 || type > 3)
     {
-        type = getIntInput("\tEnter type (1-3):\n");
+        type = getIntInput("Enter type (1-3):\n");
         if (type < 1 || type > 3)
             cout << "ERROR: Enter 1, 2, or 3 only!" << endl;
     }
@@ -229,11 +229,13 @@ void Menu::addStudent() {
     }
     else if (type == 2) {
         double minGPA = 0;
-        while (minGPA <= 0 || minGPA > 4.0) {
+        while (minGPA <= 0 || minGPA > 4.0)
+        {
             minGPA = getDoubleInput("Enter minimum GPA (0.1-4.0): ");
             if (minGPA <= 0 || minGPA > 4.0)
                 cout << "ERROR: GPA must be between 0.1 and 4.0!" << endl;
         }
+
         scholarshipStudents[scholarshipCount] = ScholarshipStudent(id, name, email, minGPA);
         db.saveStudent(id, name, "Scholarship", 0.0, to_string(minGPA));
         scholarshipCount++;
@@ -252,11 +254,11 @@ void Menu::addStudent() {
 
 void Menu::viewAllStudents() {
 
-    cout << "\t\tAdd Teacher\t\t" << endl;
+    cout << "Add Teacher" << endl;
     int total = regularCount + scholarshipCount + exchangeCount;
     if (total == 0)
     {
-        cout << "  No students found." << endl;
+        cout << "No students found." << endl;
     }
     else
     {
@@ -280,7 +282,7 @@ void Menu::viewAllStudents() {
 }
 void Menu::addTeacher() {
 
-    cout << "\t\tAdd Teacher\t\t";
+    cout << "Add Teacher";
 
     if (teacherCount >= 50)
     {
@@ -290,14 +292,14 @@ void Menu::addTeacher() {
     string id;
     while (true)
     {
-        id = getStringInput("\t\tEnter ID  : ");
+        id = getStringInput("Enter ID : ");
         if (isIdUnique(id))
             break;
-        cout << "\t\tERROR: ID already exists! Try another." << endl;
+        cout << "ERROR: ID already exists! Try another." << endl;
     }
 
-    string name = getStringInput("\t\tEnter Name  : ");
-    string email = getStringInput("\t\tEnter Email : ");
+    string name = getStringInput("Enter Name  : ");
+    string email = getStringInput("Enter Email : ");
 
     if (email.find('@') == string::npos)
     {
@@ -334,7 +336,7 @@ void Menu::viewAllTeachers()
 
 void Menu::addCourse() {
 
-    cout << "\t\tAdd Course\t\t";
+    cout << "Add Course";
 
     if (courseCount >= 50)
     {
@@ -368,7 +370,7 @@ void Menu::addCourse() {
     {
         type = getIntInput("  Enter type (1-3): ");
         if (type < 1 || type > 3)
-            cout << "  ERROR: Enter 1, 2, or 3 only!" << endl;
+            cout << "ERROR: Enter 1, 2, or 3 only!" << endl;
     }
 
     if (type == 1)
@@ -379,7 +381,7 @@ void Menu::addCourse() {
         courses[courseCount] = new LabCourse(id, title, teacherId);
 
     courseCount++;
-    cout << "\n  Course added successfully!" << endl;
+    cout << "\nCourse added successfully!" << endl;
     system("pause");
 }
     
@@ -406,10 +408,10 @@ void Menu::viewAllCourses() {
 
 void Menu::addVenue() {
 
-    cout << "\t\tAdd Venue\t\t";
+    cout << "Add Venue";
 
     if (venueCount >= 20) {
-        cout << "  ERROR: Maximum venues reached!" << endl;
+        cout << "ERROR: Maximum venues reached!" << endl;
         system("pause");
         return;
     }
@@ -417,7 +419,7 @@ void Menu::addVenue() {
     string roomId;
     while (true)
     {
-        roomId = getStringInput("  Enter Room ID  : ");
+        roomId = getStringInput("Enter Room ID : ");
         if (isRoomIdUnique(roomId))
             break;
         cout << "ERROR: Room ID already exists!" << endl;
@@ -443,47 +445,49 @@ void Menu::addVenue() {
     db.saveVenue(venues[venueCount]);
     scheduler.addVenue(venues[venueCount]);
     venueCount++;
-    cout << "\n  Venue added successfully!" << endl;
+    cout << "\nVenue added successfully!" << endl;
     system("pause");
 }
 
 
-void Menu::addSection() {
+void Menu::addSection()
+{
 
-    cout << "\t\tAdd Section\t\t";
+    cout << "Add Section";
 
-    if (sectionCount >= 100) {
-        cout << "  ERROR: Maximum sections reached!" << endl;
+    if (sectionCount >= 100)
+    {
+        cout << "ERROR: Maximum sections reached!" << endl;
         system("pause");
         return;
     }
 
     if (courseCount == 0) {
-        cout << "  ERROR: No courses exist. Add a course first!" << endl;
+        cout << "ERROR: No courses exist. Add a course first!" << endl;
         system("pause");
         return;
     }
 
-    string sectionId = getStringInput("  Enter Section ID  : ");
-    string courseId = getStringInput("  Enter Course ID   : ");
-    string teacherId = getStringInput("  Enter Teacher ID  : ");
+    string sectionId = getStringInput("Enter Section ID  : ");
+    string courseId = getStringInput("Enter Course ID   : ");
+    string teacherId = getStringInput("Enter Teacher ID  : ");
 
     if (findCourse(courseId) == nullptr)
-        cout << "  WARNING: Course ID not found in system." << endl;
+        cout << "WARNING: Course ID not found in system." << endl;
     if (findTeacher(teacherId) == nullptr)
-        cout << "  WARNING: Teacher ID not found in system." << endl;
+        cout << "WARNING: Teacher ID not found in system." << endl;
 
     sections[sectionCount] = Section(sectionId, courseId, teacherId);
     db.saveSection(sections[sectionCount]);
     scheduler.addSection(sections[sectionCount]);
     sectionCount++;
-    cout << "\n  Section added!" << endl;
+    cout << "\n ection added!" << endl;
     system("pause");
 }
 
 void Menu::registerStudentToCourse() {
 
-    cout << "\t\tRegister Student to Course\t\t";
+    cout << "Register Student to Course";
 
     if (courseCount == 0)
     {
@@ -516,7 +520,7 @@ void Menu::registerStudentToCourse() {
     }
 
     if (course->isStudentEnrolled(studentId)) {
-        cout << "  ERROR: Student already enrolled in this course!" << endl;
+        cout << "ERROR: Student already enrolled in this course!" << endl;
         system("pause");
         return;
     }
@@ -534,7 +538,7 @@ void Menu::registerStudentToCourse() {
         ExchangeStudent* e = findExchange(studentId);
         if (e)
             e->enrollinCourse(courseId);
-        cout << "\n  Registration successful!" << endl;
+        cout << "\nRegistration successful!" << endl;
     }
     system("pause");
 }
@@ -543,10 +547,10 @@ void Menu::registerStudentToCourse() {
 
 void Menu::enterMarks() {
 
-    cout <<"\t\tEnter Marks\t\t";
+    cout <<"Enter Marks";
 
     if (courseCount == 0) {
-        cout << "  ERROR: No courses exist!" << endl;
+        cout << "ERROR: No courses exist!" << endl;
         system("pause");
         return;
     }
@@ -555,27 +559,27 @@ void Menu::enterMarks() {
     Course* course = findCourse(courseId);
     if (course == nullptr)
     {
-        cout << "  ERROR: Course not found!" << endl;
+        cout << "ERROR: Course not found!" << endl;
         system("pause");
         return;
     }
 
-    cout << "\n  Assessment Type:" << endl;
-    cout << "  1 = Exam" << endl;
-    cout << "  2 = Quiz" << endl;
-    cout << "  3 = Assignment" << endl;
+    cout << "\nAssessment Type:" << endl;
+    cout << "1 = Exam" << endl;
+    cout << "2 = Quiz" << endl;
+    cout << "3 = Assignment" << endl;
 
     int type = 0;
     while (type < 1 || type > 3) {
-        type = getIntInput("  Enter type (1-3): ");
+        type = getIntInput("Enter type (1-3): ");
         if (type < 1 || type > 3)
-            cout << "  ERROR: Enter 1, 2, or 3!" << endl;
+            cout << "ERROR: Enter 1, 2, or 3!" << endl;
     }
 
     // Lab courses cannot have exams
     LabCourse* lab = dynamic_cast<LabCourse*>(course);
     if (lab != nullptr && type == 1) {
-        cout << "  ERROR: Lab courses cannot have Exams!" << endl;
+        cout << "ERROR: Lab courses cannot have Exams!" << endl;
         system("pause");
         return;
     }
@@ -583,30 +587,30 @@ void Menu::enterMarks() {
     double raw = -1, max = -1, wt = -1;
 
     while (raw < 0) {
-        raw = getDoubleInput("  Enter raw score : ");
+        raw = getDoubleInput("Enter raw score : ");
         if (raw < 0)
-            cout << "  ERROR: Score cannot be negative!" << endl;
+            cout << "ERROR: Score cannot be negative!" << endl;
     }
 
     while (max <= 0)
     {
-        max = getDoubleInput("  Enter max score : ");
+        max = getDoubleInput("Enter max score : ");
         if (max <= 0)
-            cout << "  ERROR: Max score must be greater than 0!" << endl;
+            cout << "ERROR: Max score must be greater than 0!" << endl;
     }
 
     if (raw > max)
     {
-        cout << "  ERROR: Raw score cannot exceed max score!" << endl;
+        cout << "ERROR: Raw score cannot exceed max score!" << endl;
         system("pause");
         return;
     }
 
     while (wt <= 0 || wt > 100)
     {
-        wt = getDoubleInput("  Enter weightage (1-100): ");
+        wt = getDoubleInput("Enter weightage (1-100): ");
         if (wt <= 0 || wt > 100)
-            cout << "  ERROR: Weightage must be between 1 and 100!" << endl;
+            cout << "ERROR: Weightage must be between 1 and 100!" << endl;
     }
 
     if (type == 1)
@@ -655,7 +659,7 @@ void Menu::viewTranscript() {
     }
 
 
-    cout << "  ERROR: Student not found!" << endl;
+    cout << "ERROR: Student not found!" << endl;
     system("pause");
 }
 
@@ -666,15 +670,15 @@ void Menu::leaveFeedback() {
 
     if (teacherCount == 0)
     {
-        cout << "  ERROR: No teachers exist!" << endl;
+        cout << "ERROR: No teachers exist!" << endl;
         system("pause");
         return;
     }
 
-    string id = getStringInput("  Enter Teacher ID: ");
+    string id = getStringInput("Enter Teacher ID: ");
     Teacher* teacher = findTeacher(id);
     if (teacher == nullptr) {
-        cout << "  ERROR: Teacher not found!" << endl;
+        cout << "ERROR: Teacher not found!" << endl;
         system("pause");
         return;
     }
@@ -682,14 +686,14 @@ void Menu::leaveFeedback() {
     int rating = 0;
     while (rating < 1 || rating > 5)
     {
-        rating = getIntInput("  Enter rating (1-5): ");
+        rating = getIntInput("Enter rating (1-5): ");
         if (rating < 1 || rating > 5)
-            cout << "  ERROR: Rating must be between 1 and 5!" << endl;
+            cout << "ERROR: Rating must be between 1 and 5!" << endl;
     }
 
     teacher->addFeedback(rating);
-    cout << "\n  Feedback submitted!" << endl;
-    cout << "  New Average Score: " << teacher->getAverageScore() << "/5" << endl;
+    cout << "\nFeedback submitted!" << endl;
+    cout << "New Average Score: " << teacher->getAverageScore() << "/5" << endl;
     system("pause");
 }
 
@@ -699,12 +703,12 @@ void Menu::generateSchedule() {
 
     if (sectionCount == 0)
     {
-        cout << "  ERROR: No sections exist! Add sections first." << endl;
+        cout << "ERROR: No sections exist! Add sections first." << endl;
         system("pause");
         return;
     }
     if (venueCount == 0) {
-        cout << "  ERROR: No venues exist! Add venues first." << endl;
+        cout << "ERROR: No venues exist! Add venues first." << endl;
         system("pause");
         return;
     }
@@ -729,12 +733,12 @@ void Menu::studentMenu() {
     while (choice != 5) {
 
         cout << "Student Menu\n";
-        cout << "  1. Add Student" << endl;
-        cout << "  2. View All Students" << endl;
-        cout << "  3. Register Student to Course" << endl;
-        cout << "  4. View Transcript" << endl;
-        cout << "  5. Back" << endl;
-        choice = getIntInput("\n  Enter choice (1-5): ");
+        cout << "1. Add Student" << endl;
+        cout << "2. View All Students" << endl;
+        cout << "3. Register Student to Course" << endl;
+        cout << "4. View Transcript" << endl;
+        cout << "5. Back" << endl;
+        choice = getIntInput("\n Enter choice (1-5): ");
         if (choice == 1)
             addStudent();
         else if (choice == 2)
@@ -755,11 +759,11 @@ void Menu::teacherMenu() {
     while (choice != 5) {
 
         cout << "Teacher Menu";
-        cout << "  1. Add Teacher" << endl;
-        cout << "  2. View All Teachers" << endl;
-        cout << "  3. Enter Marks" << endl;
-        cout << "  4. Leave Feedback" << endl;
-        cout << "  5. Back" << endl;
+        cout << "1. Add Teacher" << endl;
+        cout << "2. View All Teachers" << endl;
+        cout << "3. Enter Marks" << endl;
+        cout << "4. Leave Feedback" << endl;
+        cout << "5. Back" << endl;
         choice = getIntInput("\n  Enter choice (1-5): ");
         if (choice == 1)
             addTeacher();
@@ -776,16 +780,18 @@ void Menu::teacherMenu() {
     }
 }
 
-void Menu::courseMenu() {
+void Menu::courseMenu()
+{
     int choice = 0;
-    while (choice != 4) {
+    while (choice != 4) 
+    {
 
         cout << "Course Menu";
-        cout << "  1. Add Course" << endl;
-        cout << "  2. View All Courses" << endl;
-        cout << "  3. Add Venue" << endl;
-        cout << "  4. Back" << endl;
-        choice = getIntInput("\n  Enter choice (1-4): ");
+        cout << "1. Add Course" << endl;
+        cout << "2. View All Courses" << endl;
+        cout << "3. Add Venue" << endl;
+        cout << "4. Back" << endl;
+        choice = getIntInput("\nEnter choice (1-4): ");
         if (choice == 1)
             addCourse();
         else if (choice == 2)
@@ -795,7 +801,7 @@ void Menu::courseMenu() {
         else if (choice == 4)
             return;
         else
-            cout << "\n  ERROR: Invalid choice!" << endl;
+            cout << "\nERROR: Invalid choice!" << endl;
     }
 }
 
@@ -805,11 +811,11 @@ void Menu::scheduleMenu() {
     {
 
         cout << "Schedule Menu";
-        cout << "  1. Add Section" << endl;
-        cout << "  2. Generate Exam Schedule" << endl;
-        cout << "  3. View Schedule" << endl;
-        cout << "  4. Back" << endl;
-        choice = getIntInput("\n  Enter choice (1-4): ");
+        cout << "1. Add Section" << endl;
+        cout << "2. Generate Exam Schedule" << endl;
+        cout << "3. View Schedule" << endl;
+        cout << "4. Back" << endl;
+        choice = getIntInput("\nEnter choice (1-4): ");
         if (choice == 1)
             addSection();
         else if (choice == 2)
@@ -818,7 +824,7 @@ void Menu::scheduleMenu() {
             viewSchedule();
         else if (choice == 4)
             return;
-        else    cout << "\n  ERROR: Invalid choice!" << endl;
+        else    cout << "\nERROR: Invalid choice!" << endl;
     }
 }
 
@@ -828,12 +834,12 @@ void Menu::mainMenu()
     while (choice != 5) {
 
         cout << "Academic Management System"<<endl;
-        cout << "  1. Student Menu" << endl;
-        cout << "  2. Teacher Menu" << endl;
-        cout << "  3. Course Menu" << endl;
-        cout << "  4. Schedule Menu" << endl;
-        cout << "  5. Exit" << endl;
-        choice = getIntInput("\n  Enter choice (1-5): ");
+        cout << "1. Student Menu" << endl;
+        cout << "2. Teacher Menu" << endl;
+        cout << "3. Course Menu" << endl;
+        cout << "4. Schedule Menu" << endl;
+        cout << "5. Exit" << endl;
+        choice = getIntInput("\nEnter choice (1-5): ");
         if (choice == 1)
             studentMenu();
         else if (choice == 2)
@@ -843,8 +849,8 @@ void Menu::mainMenu()
         else if (choice == 4)
             scheduleMenu();
         else if (choice == 5)
-            cout << "\n  Goodbye!" << endl;
+            cout << "\nThank You!" << endl;
         else
-            cout << "\n  ERROR: Invalid choice! Enter 1-5." << endl;
+            cout << "\nERROR: Invalid choice! Enter 1-5." << endl;
     }
 }
