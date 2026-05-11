@@ -421,3 +421,48 @@ void Menu::addSection() {
     cout << "\n  Section added!" << endl;
     system("pause");
 }
+
+void Menu::registerStudentToCourse() {
+
+    cout << "\t\tRegister Student to Course\t\t";
+
+    if (courseCount == 0)
+    {
+        cout << "ERROR: No courses exist!" << endl;
+        system("pause");
+        return;
+    }
+
+    string studentId = getStringInput("Enter Student ID : ");
+    string courseId = getStringInput("Enter Course ID  : ");
+
+    // Check student exists
+    bool studentExists = findRegular(studentId) != nullptr ||
+        findScholarship(studentId) != nullptr ||
+        findExchange(studentId) != nullptr;
+
+    if (!studentExists)
+    {
+        cout << "ERROR: Student ID not found!" << endl;
+        system("pause");
+         return;
+    }
+
+    Course* course = findCourse(courseId);
+    if (course == nullptr)
+    {
+        cout << "ERROR: Course not found!" << endl;
+        system("pause");
+        return;
+    }
+
+    if (course->isStudentEnrolled(studentId)) {
+        cout << "  ERROR: Student already enrolled in this course!" << endl;
+        system("pause");
+        return;
+    }
+
+   
+    system("pause");
+}
+
