@@ -54,4 +54,5 @@ public:
     void addVenue();
     void addSection();
     void registerStudentToCourse();
+    void enterMarks();
 };

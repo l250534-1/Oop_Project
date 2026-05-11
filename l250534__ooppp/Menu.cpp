@@ -480,3 +480,86 @@ void Menu::registerStudentToCourse() {
     system("pause");
 }
 
+
+
+void Menu::enterMarks() {
+
+    cout <<"\t\tEnter Marks\t\t";
+
+    if (courseCount == 0) {
+        cout << "  ERROR: No courses exist!" << endl;
+        system("pause");
+        return;
+    }
+
+    string courseId = getStringInput("  Enter Course ID: ");
+    Course* course = findCourse(courseId);
+    if (course == nullptr)
+    {
+        cout << "  ERROR: Course not found!" << endl;
+        system("pause");
+        return;
+    }
+
+    cout << "\n  Assessment Type:" << endl;
+    cout << "  1 = Exam" << endl;
+    cout << "  2 = Quiz" << endl;
+    cout << "  3 = Assignment" << endl;
+
+    int type = 0;
+    while (type < 1 || type > 3) {
+        type = getIntInput("  Enter type (1-3): ");
+        if (type < 1 || type > 3)
+            cout << "  ERROR: Enter 1, 2, or 3!" << endl;
+    }
+
+    // Lab courses cannot have exams
+    LabCourse* lab = dynamic_cast<LabCourse*>(course);
+    if (lab != nullptr && type == 1) {
+        cout << "  ERROR: Lab courses cannot have Exams!" << endl;
+        system("pause");
+        return;
+    }
+
+    double raw = -1, max = -1, wt = -1;
+
+    while (raw < 0) {
+        raw = getDoubleInput("  Enter raw score : ");
+        if (raw < 0)
+            cout << "  ERROR: Score cannot be negative!" << endl;
+    }
+
+    while (max <= 0)
+    {
+        max = getDoubleInput("  Enter max score : ");
+        if (max <= 0)
+            cout << "  ERROR: Max score must be greater than 0!" << endl;
+    }
+
+    if (raw > max)
+    {
+        cout << "  ERROR: Raw score cannot exceed max score!" << endl;
+        system("pause");
+        return;
+    }
+
+    while (wt <= 0 || wt > 100)
+    {
+        wt = getDoubleInput("  Enter weightage (1-100): ");
+        if (wt <= 0 || wt > 100)
+            cout << "  ERROR: Weightage must be between 1 and 100!" << endl;
+    }
+
+    if (type == 1)
+        course->addAssessment(new Exam(raw, max, wt));
+    else if (type == 2)
+        course->addAssessment(new Quiz(raw, max, wt));
+    else
+        course->addAssessment(new Assignment(raw, max, wt));
+
+    cout << endl;
+    course->displayAssessments();
+    cout << "\nFinal Grade: " << course->calculateFinalGrade() << "%" << endl;
+    system("pause");
+}
+
