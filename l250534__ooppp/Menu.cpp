@@ -716,3 +716,49 @@ void Menu::teacherMenu() {
             cout << "\n ERROR: Invalid choice!" << endl;
     }
 }
+
+void Menu::courseMenu() {
+    int choice = 0;
+    while (choice != 4) {
+
+        cout << "Course Menu";
+        cout << "  1. Add Course" << endl;
+        cout << "  2. View All Courses" << endl;
+        cout << "  3. Add Venue" << endl;
+        cout << "  4. Back" << endl;
+        choice = getIntInput("\n  Enter choice (1-4): ");
+        if (choice == 1)
+            addCourse();
+        else if (choice == 2)
+            viewAllCourses();
+        else if (choice == 3)
+            addVenue();
+        else if (choice == 4)
+            return;
+        else
+            cout << "\n  ERROR: Invalid choice!" << endl;
+    }
+}
+
+void Menu::scheduleMenu() {
+    int choice = 0;
+    while (choice != 4)
+    {
+
+        cout << "Schedule Menu";
+        cout << "  1. Add Section" << endl;
+        cout << "  2. Generate Exam Schedule" << endl;
+        cout << "  3. View Schedule" << endl;
+        cout << "  4. Back" << endl;
+        choice = getIntInput("\n  Enter choice (1-4): ");
+        if (choice == 1)
+            addSection();
+        else if (choice == 2)
+            generateSchedule();
+        else if (choice == 3)
+            viewSchedule();
+        else if (choice == 4)
+            return;
+        else    cout << "\n  ERROR: Invalid choice!" << endl;
+    }
+}
