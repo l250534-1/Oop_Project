@@ -21,11 +21,12 @@ Menu::Menu()
     for (int i = 0; i < sectionCount; i++)
         scheduler.addSection(sections[i]);
 }
-Menu::~Menu() {
+Menu::~Menu()//destructor
+{
     for (int i = 0; i < courseCount; i++)
         delete courses[i];
 }
-
+\
 int Menu::getIntInput(string p)
 {
     int value;
@@ -193,8 +194,19 @@ void Menu::addStudent() {
     string name = getStringInput("\tEnter Name  :");
     string email = getStringInput("\tEnter Email :");
 
-    if (email.find('@') == string::npos)
-        cout << "  WARNING: Email looks invalid." << endl;
+    bool found = false;
+    for (int i = 0; i < email.length(); i++)
+    {
+        if (email[i] == '@')
+        {
+            found = true;
+            break;
+        }
+    }
+    if (!found)
+    {
+        cout << "WARNING: Email looks invalid." << endl;
+    }
 
     cout << "\nStudent Type:\n" << endl;
     cout << "  1 = Regular" << endl;
