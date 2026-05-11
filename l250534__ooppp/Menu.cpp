@@ -599,3 +599,37 @@ void Menu::viewTranscript() {
     cout << "  ERROR: Student not found!" << endl;
     system("pause");
 }
+
+
+void Menu::leaveFeedback() {
+
+    cout << "Leave Feedback for Teacher";
+
+    if (teacherCount == 0)
+    {
+        cout << "  ERROR: No teachers exist!" << endl;
+        system("pause");
+        return;
+    }
+
+    string id = getStringInput("  Enter Teacher ID: ");
+    Teacher* teacher = findTeacher(id);
+    if (teacher == nullptr) {
+        cout << "  ERROR: Teacher not found!" << endl;
+        system("pause");
+        return;
+    }
+
+    int rating = 0;
+    while (rating < 1 || rating > 5)
+    {
+        rating = getIntInput("  Enter rating (1-5): ");
+        if (rating < 1 || rating > 5)
+            cout << "  ERROR: Rating must be between 1 and 5!" << endl;
+    }
+
+    teacher->addFeedback(rating);
+    cout << "\n  Feedback submitted!" << endl;
+    cout << "  New Average Score: " << teacher->getAverageScore() << "/5" << endl;
+    system("pause");
+}

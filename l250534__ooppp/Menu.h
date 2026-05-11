@@ -56,4 +56,5 @@ public:
     void registerStudentToCourse();
     void enterMarks();
     void viewTranscript();
+    void leaveFeedback();
 };
