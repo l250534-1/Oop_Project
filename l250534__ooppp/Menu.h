@@ -49,4 +49,6 @@ public:
     void viewAllStudents();
     void addTeacher();
     void viewAllTeachers();
+    void addCourse();
+    void viewAllCourses();
 };
