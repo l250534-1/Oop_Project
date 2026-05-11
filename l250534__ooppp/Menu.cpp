@@ -251,3 +251,23 @@ void Menu::addTeacher() {
     cout << "\nTeacher added successfully!" << endl;
 
 }
+
+
+void Menu::viewAllTeachers()
+{
+
+    cout<<"All Teachers"<<endl;
+    if (teacherCount == 0)
+    {
+        cout << "  No teachers found." << endl;
+    }
+    else
+    {
+        for (int i = 0; i < teacherCount; i++)
+        {
+            teachers[i].displayProfile();
+            cout << endl;
+        }
+    }
+    system("pause");
+}
