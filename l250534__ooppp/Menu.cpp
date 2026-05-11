@@ -176,13 +176,19 @@ void Menu::addStudent() {
     }
 
     string id;
-    while (true)
+    do
     {
         id = getStringInput("\tEnter ID : ");
-        if (isIdUnique(id))
-            break;
-        cout << "\tERROR: ID already exists! Try another." << endl;
-    }
+        if (id[0] == '-')
+        {
+            cout << "\tERROR: ID cannot be negative!" << endl;
+        }
+        else if (!isIdUnique(id))
+        {
+            cout << "\tERROR: ID already exists! Try another." << endl;
+        }
+
+    } while (id[0] == '-' || !isIdUnique(id));
 
     string name = getStringInput("\tEnter Name  :");
     string email = getStringInput("\tEnter Email :");
