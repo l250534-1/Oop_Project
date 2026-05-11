@@ -779,7 +779,7 @@ void Menu::teacherMenu() {
             cout << "\n ERROR: Invalid choice!" << endl;
     }
 }
-
+                                               //Course menu
 void Menu::courseMenu()
 {
     int choice = 0;
@@ -804,7 +804,7 @@ void Menu::courseMenu()
             cout << "\nERROR: Invalid choice!" << endl;
     }
 }
-
+                                            //Schedule Menu
 void Menu::scheduleMenu() {
     int choice = 0;
     while (choice != 4)
@@ -827,7 +827,7 @@ void Menu::scheduleMenu() {
         else    cout << "\nERROR: Invalid choice!" << endl;
     }
 }
-
+                                       //Main Menu
 void Menu::mainMenu()
 {
     int choice = 0;
