@@ -690,3 +690,29 @@ void Menu::studentMenu() {
             cout << "\n ERROR: Invalid choice!" << endl;
     }
 }
+
+void Menu::teacherMenu() {
+    int choice = 0;
+    while (choice != 5) {
+
+        cout << "Teacher Menu";
+        cout << "  1. Add Teacher" << endl;
+        cout << "  2. View All Teachers" << endl;
+        cout << "  3. Enter Marks" << endl;
+        cout << "  4. Leave Feedback" << endl;
+        cout << "  5. Back" << endl;
+        choice = getIntInput("\n  Enter choice (1-5): ");
+        if (choice == 1)
+            addTeacher();
+        else if (choice == 2)
+            viewAllTeachers();
+        else if (choice == 3)
+            enterMarks();
+        else if (choice == 4)
+            leaveFeedback();
+        else if (choice == 5)
+            return;
+        else
+            cout << "\n ERROR: Invalid choice!" << endl;
+    }
+}
