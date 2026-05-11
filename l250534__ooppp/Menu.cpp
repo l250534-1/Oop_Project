@@ -662,3 +662,31 @@ void Menu::viewSchedule()
     scheduler.displaySchedule();
     system("pause");
 }
+
+
+
+void Menu::studentMenu() {
+    int choice = 0;
+    while (choice != 5) {
+
+        cout << "Student Menu";
+        cout << "  1. Add Student" << endl;
+        cout << "  2. View All Students" << endl;
+        cout << "  3. Register Student to Course" << endl;
+        cout << "  4. View Transcript" << endl;
+        cout << "  5. Back" << endl;
+        choice = getIntInput("\n  Enter choice (1-5): ");
+        if (choice == 1)
+            addStudent();
+        else if (choice == 2)
+            viewAllStudents();
+        else if (choice == 3)
+            registerStudentToCourse();
+        else if (choice == 4)
+            viewTranscript();
+        else if (choice == 5)
+            return;
+        else
+            cout << "\n ERROR: Invalid choice!" << endl;
+    }
+}

@@ -59,4 +59,9 @@ public:
     void leaveFeedback();
     void generateSchedule();
     void viewSchedule();
+    void mainMenu();
+    void studentMenu();
+    void teacherMenu();
+    void courseMenu();
+    void scheduleMenu();
 };
