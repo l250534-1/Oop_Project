@@ -45,5 +45,5 @@ public:
     RegularStudent* findRegular(string id);
     ScholarshipStudent* findScholarship(string id);
     ExchangeStudent* findExchange(string id);
-
+    void addStudent();
 };

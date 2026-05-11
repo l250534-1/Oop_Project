@@ -124,3 +124,68 @@ ExchangeStudent* Menu::findExchange(string id)
             return &exchangeStudents[i];
     return nullptr;
 }
+void Menu::addStudent() {
+    cout << "\t\tAdd Student\t\t"<<endl;
+    int total = regularCount + scholarshipCount + exchangeCount;
+    if (total >= 150) 
+    {
+        cout << "ERROR: Maximum students reached!" << endl;
+       system ("pause");
+        return;
+    }
+
+    string id;
+    while (true)
+    {
+        id = getStringInput("\tEnter ID : ");
+        if (isIdUnique(id))
+            break;
+        cout << "\tERROR: ID already exists! Try another." << endl;
+    }
+
+    string name = getStringInput("\tEnter Name  :");
+    string email = getStringInput("\tEnter Email :");
+
+    if (email.find('@') == string::npos)
+        cout << "  WARNING: Email looks invalid." << endl;
+
+    cout << "\nStudent Type:" << endl;
+    cout << "  1 = Regular" << endl;
+    cout << "  2 = Scholarship" << endl;
+    cout << "  3 = Exchange" << endl;
+
+    int type = 0;
+    while (type < 1 || type > 3)
+    {
+        type = getIntInput("\tEnter type (1-3): ");
+        if (type < 1 || type > 3)
+            cout << "ERROR: Enter 1, 2, or 3 only!" << endl;
+    }
+
+    if (type == 1) {
+        regularStudents[regularCount] = RegularStudent(id, name, email);
+        db.saveStudent(id, name, "Regular", 0.0, "");
+        regularCount++;
+        cout << "\nRegular Student added!" << endl;
+    }
+    else if (type == 2) {
+        double minGPA = 0;
+        while (minGPA <= 0 || minGPA > 4.0) {
+            minGPA = getDoubleInput("Enter minimum GPA (0.1-4.0): ");
+            if (minGPA <= 0 || minGPA > 4.0)
+                cout << "ERROR: GPA must be between 0.1 and 4.0!" << endl;
+        }
+        scholarshipStudents[scholarshipCount] = ScholarshipStudent(id, name, email, minGPA);
+        db.saveStudent(id, name, "Scholarship", 0.0, to_string(minGPA));
+        scholarshipCount++;
+        cout << "\nScholarship Student added!" << endl;
+    }
+    else
+    {
+        exchangeStudents[exchangeCount] = ExchangeStudent(id, name, email);
+        db.saveStudent(id, name, "Exchange", 0.0, "");
+        exchangeCount++;
+        cout << "\nExchange Student added!" << endl;
+    }
+    system("pause");
+}
