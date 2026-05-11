@@ -219,3 +219,35 @@ void Menu::viewAllStudents() {
     }
     system("pause");
 }
+void Menu::addTeacher() {
+
+    cout << "\t\tAdd Teacher\t\t";
+
+    if (teacherCount >= 50)
+    {
+        cout << "  ERROR: Maximum teachers reached!" << endl;
+        return;
+    }
+    string id;
+    while (true)
+    {
+        id = getStringInput("\t\tEnter ID  : ");
+        if (isIdUnique(id))
+            break;
+        cout << "\t\tERROR: ID already exists! Try another." << endl;
+    }
+
+    string name = getStringInput("\t\tEnter Name  : ");
+    string email = getStringInput("\t\tEnter Email : ");
+
+    if (email.find('@') == string::npos)
+    {
+        cout << "WARNING: Email looks invalid (no @ found)." << endl;
+    }
+
+    teachers[teacherCount] = Teacher(id, name, email);
+    db.saveTeacher(teachers[teacherCount]);
+    teacherCount++;
+    cout << "\nTeacher added successfully!" << endl;
+
+}
