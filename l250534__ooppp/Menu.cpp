@@ -462,7 +462,21 @@ void Menu::registerStudentToCourse() {
         return;
     }
 
-   
+    bool ok = course->enrollStudent(studentId);
+    if (ok)
+    {
+        //  enroll in student object
+        RegularStudent* r = findRegular(studentId);
+        if (r)
+            r->enrollinCourse(courseId);
+        ScholarshipStudent* s = findScholarship(studentId);
+        if (s)
+            s->enrollinCourse(courseId);
+        ExchangeStudent* e = findExchange(studentId);
+        if (e)
+            e->enrollinCourse(courseId);
+        cout << "\n  Registration successful!" << endl;
+    }
     system("pause");
 }
 
