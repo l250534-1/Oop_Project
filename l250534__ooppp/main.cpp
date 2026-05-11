@@ -2,7 +2,8 @@
 #include <iostream>
 using namespace std;
 
-int main() {
+int main() 
+{
     Menu menu;
     menu.mainMenu();
     return 0;

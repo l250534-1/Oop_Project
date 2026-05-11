@@ -1,16 +1,1 @@
-T-101|Dr Ahmed|ahmed@fast.edu.pk|0
-T-102|Ms Sara|sara@fast.edu.pk|0
-T-101|Dr Ahmed|ahmed@fast.edu.pk|0
-T-102|Ms Sara|sara@fast.edu.pk|0
-T-101|Dr Ahmed|ahmed@fast.edu.pk|0
-T-102|Ms Sara|sara@fast.edu.pk|0
-T-101|Dr Ahmed|ahmed@fast.edu.pk|0
-T-102|Ms Sara|sara@fast.edu.pk|0
-T-101|Dr Ahmed|ahmed@fast.edu.pk|0
-T-102|Ms Sara|sara@fast.edu.pk|0
-T-101|Dr Ahmed|ahmed@fast.edu.pk|0
-T-102|Ms Sara|sara@fast.edu.pk|0
-T-101|Dr Ahmed|ahmed@fast.edu.pk|0
-T-102|Ms Sara|sara@fast.edu.pk|0
-T-101|Dr Ahmed|ahmed@fast.edu.pk|0
-T-102|Ms Sara|sara@fast.edu.pk|0
+

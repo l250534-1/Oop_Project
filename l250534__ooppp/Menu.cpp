@@ -149,7 +149,7 @@ void Menu::addStudent() {
     if (email.find('@') == string::npos)
         cout << "  WARNING: Email looks invalid." << endl;
 
-    cout << "\nStudent Type:" << endl;
+    cout << "\nStudent Type:\n" << endl;
     cout << "  1 = Regular" << endl;
     cout << "  2 = Scholarship" << endl;
     cout << "  3 = Exchange" << endl;
@@ -157,7 +157,7 @@ void Menu::addStudent() {
     int type = 0;
     while (type < 1 || type > 3)
     {
-        type = getIntInput("\tEnter type (1-3): ");
+        type = getIntInput("\tEnter type (1-3):\n");
         if (type < 1 || type > 3)
             cout << "ERROR: Enter 1, 2, or 3 only!" << endl;
     }
@@ -669,7 +669,7 @@ void Menu::studentMenu() {
     int choice = 0;
     while (choice != 5) {
 
-        cout << "Student Menu";
+        cout << "Student Menu\n";
         cout << "  1. Add Student" << endl;
         cout << "  2. View All Students" << endl;
         cout << "  3. Register Student to Course" << endl;
@@ -768,7 +768,7 @@ void Menu::mainMenu()
     int choice = 0;
     while (choice != 5) {
 
-        cout << "Academic Management System";
+        cout << "Academic Management System"<<endl;
         cout << "  1. Student Menu" << endl;
         cout << "  2. Teacher Menu" << endl;
         cout << "  3. Course Menu" << endl;
