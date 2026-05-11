@@ -25,20 +25,38 @@ Menu::~Menu() {
     for (int i = 0; i < courseCount; i++)
         delete courses[i];
 }
-int Menu::getIntInput(string p) {
+
+int Menu::getIntInput(string p)
+{
     int value;
-    while (true) {
+    bool valid;
+    do
+    {
+        valid = true;
         cout << p;
-        if (cin >> value) 
+        if (!(cin >> value))
         {
-            cin.ignore();
-            return value;
+            cout << "ERROR: Please enter a valid integer!" << endl;
+
+            cin.clear();
+            cin.ignore(1000, '\n');
+
+            valid = false;
         }
-        cout << "  ERROR: Please enter a valid number!" << endl;
-        cin.clear();
-        cin.ignore();
-    }
+        else if (value < 0)
+        {
+            cout << "ERROR: Negative values are not allowed!" << endl;
+            cin.ignore(1000, '\n');
+            valid = false;
+        }
+        else
+        {
+            cin.ignore(1000, '\n');
+        }
+    } while (!valid);
+    return value;
 }
+
 double Menu::getDoubleInput(string p)
 {
     double value;
