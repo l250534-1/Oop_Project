@@ -481,7 +481,7 @@ void Menu::addSection()
     db.saveSection(sections[sectionCount]);
     scheduler.addSection(sections[sectionCount]);
     sectionCount++;
-    cout << "\n ection added!" << endl;
+    cout << "\nSection added!" << endl;
     system("pause");
 }
 
