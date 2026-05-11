@@ -38,8 +38,8 @@ public:
     int getIntInput(string p);
     double  getDoubleInput(string p);
     string  getStringInput(string p);
-    bool    isIdUnique(string id);
-    bool    isRoomIdUnique(string roomId);
+    bool isIdUnique(string id);
+    bool isRoomIdUnique(string roomId);
     Teacher* findTeacher(string id);
     Course* findCourse(string id);
     RegularStudent* findRegular(string id);
@@ -51,4 +51,6 @@ public:
     void viewAllTeachers();
     void addCourse();
     void viewAllCourses();
+    void addVenue();
+    void addSection();
 };

@@ -345,3 +345,45 @@ void Menu::viewAllCourses() {
     system("pause");
 }
 
+void Menu::addVenue() {
+
+    cout << "\t\tAdd Venue\t\t";
+
+    if (venueCount >= 20) {
+        cout << "  ERROR: Maximum venues reached!" << endl;
+        system("pause");
+        return;
+    }
+
+    string roomId;
+    while (true)
+    {
+        roomId = getStringInput("  Enter Room ID  : ");
+        if (isRoomIdUnique(roomId))
+            break;
+        cout << "ERROR: Room ID already exists!" << endl;
+    }
+
+    int capacity = 0;
+    while (capacity <= 0)
+    {
+        capacity = getIntInput("Enter Capacity : ");
+        if (capacity <= 0)
+            cout << "ERROR: Capacity must be greater than 0!" << endl;
+    }
+
+    int comp = -1;
+    while (comp != 0 && comp != 1)
+    {
+        comp = getIntInput("Has Computers? (1=Yes / 0=No): ");
+        if (comp != 0 && comp != 1)
+            cout << "ERROR: Enter 1 or 0 only!" << endl;
+    }
+
+    venues[venueCount] = Venue(roomId, capacity, comp == 1);
+    db.saveVenue(venues[venueCount]);
+    scheduler.addVenue(venues[venueCount]);
+    venueCount++;
+    cout << "\n  Venue added successfully!" << endl;
+    system("pause");
+}
