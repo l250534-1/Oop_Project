@@ -633,3 +633,32 @@ void Menu::leaveFeedback() {
     cout << "  New Average Score: " << teacher->getAverageScore() << "/5" << endl;
     system("pause");
 }
+
+void Menu::generateSchedule() {
+
+    cout << "Generate Exam Schedule";
+
+    if (sectionCount == 0)
+    {
+        cout << "  ERROR: No sections exist! Add sections first." << endl;
+        system("pause");
+        return;
+    }
+    if (venueCount == 0) {
+        cout << "  ERROR: No venues exist! Add venues first." << endl;
+        system("pause");
+        return;
+    }
+
+    scheduler.generateExamSchedule(courses, courseCount);
+    scheduler.saveSchedule();
+    system("pause");
+}
+
+void Menu::viewSchedule()
+{
+
+    cout << "Exam Schedule";
+    scheduler.displaySchedule();
+    system("pause");
+}

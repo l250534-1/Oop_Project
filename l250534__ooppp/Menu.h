@@ -57,4 +57,6 @@ public:
     void enterMarks();
     void viewTranscript();
     void leaveFeedback();
+    void generateSchedule();
+    void viewSchedule();
 };
