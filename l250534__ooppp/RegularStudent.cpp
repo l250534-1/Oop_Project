@@ -39,13 +39,13 @@ void RegularStudent::viewTranscript() {
     {
     cout << "No grades yet." << endl;
     }
-    else 
+    /*else 
     {
         for (int i = 0; i < gradeCount; i++)
         {
             cout << "Course " << (i + 1) << " : " << grades[i]  << endl;
         }
-    }
+    }*/
     cout << "  GPA     : " << calculateGPA() << endl;
     cout  << endl;
 }

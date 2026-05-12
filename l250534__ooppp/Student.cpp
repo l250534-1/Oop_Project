@@ -38,6 +38,7 @@ string Student::getType()
 int Student::getEnrolledCount() { 
     return enrolledCount;
 }
-string Student::getEnrolledCourse(int i) {
+string Student::getEnrolledCourse(int i)
+{
     return enrolledCourse_ids[i];
 }
