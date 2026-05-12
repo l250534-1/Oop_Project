@@ -289,22 +289,25 @@ void Menu::addTeacher() {
         cout << "  ERROR: Maximum teachers reached!" << endl;
         return;
     }
+
     string id;
-    while (true)
+    do
     {
         id = getStringInput("Enter ID : ");
-        if (isIdUnique(id))
-            break;
-        cout << "ERROR: ID already exists! Try another." << endl;
-    }
+        if (id[0] == '-')
+            cout << "ERROR: ID cannot be negative!" << endl;
+        else if (!isIdUnique(id))
+            cout << "ERROR: ID already exists! Try another." << endl;
+    } while (id[0] == '-' || !isIdUnique(id));
 
     string name = getStringInput("Enter Name  : ");
     string email = getStringInput("Enter Email : ");
 
-    if (email.find('@') == string::npos)
-    {
-        cout << "WARNING: Email looks invalid (no @ found)." << endl;
-    }
+    do {
+        email = getStringInput("Enter Email : ");
+        if (email.find('@') == string::npos)
+            cout << "ERROR: Invalid email! Must contain @" << endl;
+    } while (email.find('@') == string::npos);
 
     teachers[teacherCount] = Teacher(id, name, email);
     db.saveTeacher(teachers[teacherCount]);
