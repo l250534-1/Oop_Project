@@ -1,3 +1,3 @@
-cs1001|PF|101|Core
-cs1002|PF|102|Elective
-cs1003|OOP|102|Lab
+1|MVC|100|Core
+2|PF|101|Elective
+3|OOP|101|Lab

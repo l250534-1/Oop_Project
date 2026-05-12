@@ -1,7 +1,4 @@
-0534|mareeb|@|Regular|
-0839|azeen|@|Scholarship|1.000000
-0664|fatima|@|Exchange|
-
-123|meow|@|Regular|
-2539|ayesha|@|Regular|
-5879|ahmed|@|Regular|
+0534|Meerab|meerab@gmail.com|Regular|
+071|Alisha|alisha@gmail.com|Regular|
+0664|Fatima|fatima@gmail.com|Scholarship|2.500000
+0839|Azeen|azeen@gmail.com|Exchange|

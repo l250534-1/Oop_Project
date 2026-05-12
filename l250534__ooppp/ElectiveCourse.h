@@ -5,6 +5,6 @@
 class ElectiveCourse : public Course {
 public:
     ElectiveCourse(string courseId, string title, string teacherId);
-    double calculateFinalGrade();
+    double calculateFinalGrade(string studentId);
     int    getExamDuration();
 };

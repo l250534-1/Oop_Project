@@ -6,12 +6,19 @@ LabCourse::LabCourse(string courseId, string title, string teacherId)
     requiresComputers = true;
 }
 
-double LabCourse::calculateFinalGrade() {
+double LabCourse::calculateFinalGrade(string studentId)
+{
     double total = 0;
-    for (int i = 0; i < assessmentCount; i++) {
-        if (assessments[i]->getType() != "Exam")
+
+    for (int i = 0; i < assessmentCount; i++)
+    {
+        if (assessments[i]->getStudentId() == studentId &&
+            assessments[i]->getType() != "Exam")
+        {
             total += assessments[i]->calculateWeightedScore();
+        }
     }
+
     return total;
 }
 

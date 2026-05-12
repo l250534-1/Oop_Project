@@ -5,6 +5,6 @@
 class CoreCourse : public Course {
 public:
     CoreCourse(string courseId, string title, string teacherId);
-    double calculateFinalGrade();
+    double calculateFinalGrade(string studentId);
     int    getExamDuration();
 };

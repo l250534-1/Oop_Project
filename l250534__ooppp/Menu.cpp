@@ -670,25 +670,25 @@ void Menu::enterMarks() {
     }
 
     if (type == 1) {
-        Exam* ex = new Exam(studentId,raw, max, wt);
+        Exam* ex = new Exam(studentId, raw, max, wt);
         course->addAssessment(ex);
         db.saveAssessment(courseId, ex);
     }
     else if (type == 2) {
-        Quiz* qz = new Quiz(studentId,raw, max, wt);
+        Quiz* qz = new Quiz(studentId, raw, max, wt);
         course->addAssessment(qz);
         db.saveAssessment(courseId, qz);
     }
     else {
-        Assignment* as = new Assignment(studentId,raw, max, wt);
+        Assignment* as = new Assignment(studentId, raw, max, wt);
         course->addAssessment(as);
         db.saveAssessment(courseId, as);
     }
-
     cout << endl;
-    course->displayAssessments();
-    double finalGrade = course->calculateFinalGrade();
+    course->displayAssessments(studentId);
+    double finalGrade = course->calculateFinalGrade(studentId);
     cout << "\nFinal Grade: " << finalGrade << "%" << endl;
+
 
     double gpaPoints = percentageToGPA(finalGrade);
 

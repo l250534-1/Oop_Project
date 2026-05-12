@@ -45,15 +45,15 @@ void Course::addAssessment(Assessment* a)
     }
 }
 
-void Course::displayAssessments()
-{
-    cout << " \t\tAssessments for " << title << "\t\t" << endl;
+void Course::displayAssessments(string studentId) {
+    cout << "Assessments for " << title << " " << endl;
     if (assessmentCount == 0) {
         cout << "  No assessments yet." << endl;
         return;
     }
     for (int i = 0; i < assessmentCount; i++) {
-        assessments[i]->display();
+        if (assessments[i]->getStudentId() == studentId)
+            assessments[i]->display();
     }
 }
 

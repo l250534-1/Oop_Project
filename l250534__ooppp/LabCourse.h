@@ -7,7 +7,7 @@ private:
     bool requiresComputers;
 public:
     LabCourse(string courseId, string title, string teacherId);
-    double calculateFinalGrade();
+    double calculateFinalGrade(string studentId);
     int    getExamDuration();
     bool   getRequiresComputers();
 };

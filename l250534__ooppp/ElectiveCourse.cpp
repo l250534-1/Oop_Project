@@ -5,11 +5,17 @@ ElectiveCourse::ElectiveCourse(string courseId, string title, string teacherId)
     : Course(courseId, title, teacherId, "Elective")
 {}
 
-double ElectiveCourse::calculateFinalGrade() 
+double ElectiveCourse::calculateFinalGrade(string studentId)
 {
     double total = 0;
     for (int i = 0; i < assessmentCount; i++)
-        total += assessments[i]->calculateWeightedScore();
+    {
+        if (assessments[i]->getStudentId() == studentId)
+        {
+            total += assessments[i]->calculateWeightedScore();
+        }
+    }
+
     return total;
 }
 

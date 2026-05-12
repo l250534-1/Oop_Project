@@ -15,12 +15,12 @@ protected:
 
 public:
     Course(string courseId, string title, string teacherId, string type);
-    virtual double calculateFinalGrade() = 0;
+    virtual double calculateFinalGrade(string studentId) = 0;
     virtual int    getExamDuration() = 0;
     bool   enrollStudent(string studentId);
     bool   isStudentEnrolled(string studentId);
     void   addAssessment(Assessment* a);
-    void   displayAssessments();
+    void displayAssessments(string studentId);
     string getCourseId();
     string getTitle();
     string getTeacherId();
