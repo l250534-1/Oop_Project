@@ -468,15 +468,42 @@ void Menu::addSection()
         return;
     }
 
-    string sectionId = getStringInput("Enter Section ID  : ");
-    string courseId = getStringInput("Enter Course ID   : ");
-    string teacherId = getStringInput("Enter Teacher ID  : ");
+    string sectionId;
+    do {
+        sectionId = getStringInput("  Enter Section ID : ");
+        bool duplicate = false;
+        for (int i = 0; i < sectionCount; i++) {
+            if (sections[i].getSectionId() == sectionId) {
+                duplicate = true;
+                break;
+            }
+        }
+        if (duplicate)
+            cout << "  ERROR: Section ID already exists!" << endl;
+        else
+            break;
+    } while (true);
 
-    if (findCourse(courseId) == nullptr)
-        cout << "WARNING: Course ID not found in system." << endl;
-    if (findTeacher(teacherId) == nullptr)
-        cout << "WARNING: Teacher ID not found in system." << endl;
+    string courseId;
+    do {
+        courseId = getStringInput("  Enter Course ID  : ");
+        if (findCourse(courseId) == nullptr)
+            cout << "  ERROR: Course not found! Enter a valid Course ID." << endl;
+        else
+            break;
+    } while (true);  
 
+
+    string teacherId;
+    do {
+        teacherId = getStringInput("  Enter Teacher ID : ");
+        if (findTeacher(teacherId) == nullptr)
+            cout << "  ERROR: Teacher not found! Enter a valid Teacher ID." << endl;
+        else
+            break;
+    } while (true);
+
+  
     sections[sectionCount] = Section(sectionId, courseId, teacherId);
     db.saveSection(sections[sectionCount]);
     scheduler.addSection(sections[sectionCount]);
