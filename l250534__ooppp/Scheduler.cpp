@@ -75,6 +75,8 @@ string Scheduler::suggestNextSlot(string venueId)
 	return "No slots available";
 }
 
+
+
 //Har section ko ek venue (room) + time slot assign karna
 void Scheduler::generateExamSchedule(Course* courses[], int courseCount)
 {

@@ -813,6 +813,14 @@ void Menu::generateSchedule() {
         return;
     }
 
+    scheduler = Scheduler();
+
+    for (int i = 0; i < venueCount; i++)
+        scheduler.addVenue(venues[i]);
+
+    for (int i = 0; i < sectionCount; i++)
+        scheduler.addSection(sections[i]);
+
     scheduler.generateExamSchedule(courses, courseCount);
     scheduler.saveSchedule();
     system("pause");
