@@ -7,7 +7,7 @@
 using namespace std;
 class Scheduler {
 private:
-    Section sections[100];
+    Section* sections[100];
     int sectionCount;
     Venue venues[20];
     int venueCount;
@@ -16,7 +16,7 @@ private:
 
 public:
     Scheduler();
-    void   addSection(Section s);
+    void   addSection(Section *s);
     void   addVenue(Venue v);
     bool   isVenueBooked(string venueId, string timeSlot);
     string suggestNextSlot(string venueId);

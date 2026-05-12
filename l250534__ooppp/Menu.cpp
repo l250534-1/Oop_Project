@@ -24,7 +24,7 @@ Menu::Menu()
     for (int i = 0; i < venueCount; i++)
         scheduler.addVenue(venues[i]);
     for (int i = 0; i < sectionCount; i++)
-        scheduler.addSection(sections[i]);
+        scheduler.addSection(&sections[i]);
 }
 Menu::~Menu()//destructor
 {
@@ -515,7 +515,8 @@ void Menu::addSection()
   
     sections[sectionCount] = Section(sectionId, courseId, teacherId);
     db.saveSection(sections[sectionCount]);
-    scheduler.addSection(sections[sectionCount]);
+    scheduler.addSection(&sections[sectionCount]);
+  
     sectionCount++;
     cout << "\nSection added!" << endl;
     system("pause");
@@ -819,7 +820,7 @@ void Menu::generateSchedule() {
         scheduler.addVenue(venues[i]);
 
     for (int i = 0; i < sectionCount; i++)
-        scheduler.addSection(sections[i]);
+        scheduler.addSection(&sections[i]);
 
     scheduler.generateExamSchedule(courses, courseCount);
     scheduler.saveSchedule();

@@ -37,9 +37,9 @@ Scheduler::Scheduler()
 	timeSlotCount = 18;
 
 }
-void Scheduler::addSection(Section s)
+void Scheduler::addSection(Section* s)
 {
-	if (sectionCount < 100) 
+	if (sectionCount < 100)
 	{
 		sections[sectionCount] = s;
 		sectionCount++;
@@ -58,8 +58,9 @@ bool Scheduler::isVenueBooked(string venueId, string timeSlot)
 {
 	for (int i = 0; i < sectionCount; i++)
 	{
-		if (sections[i].getVenueId() == venueId &&
-			sections[i].getTimeSlot() == timeSlot)
+		if (sections[i]->getVenueId() != "Unassigned" &&
+			sections[i]->getVenueId() == venueId &&
+			sections[i]->getTimeSlot() == timeSlot)
 			return true;
 	}
 	return false;
@@ -83,9 +84,9 @@ void Scheduler::generateExamSchedule(Course* courses[], int courseCount)
 	cout << "Generating exam schedule" << endl;
 	for (int i = 0; i < sectionCount; i++)//Schedule one section at a time
 	{
-		cout << "SECTION DEBUG: " << sections[i].getSectionId() << endl;
-		cout << "Course ID   : " << sections[i].getCourseId() << endl;
-		cout << "Teacher ID  : " << sections[i].getTeacherId() << endl;
+		cout << "SECTION DEBUG: " << sections[i]->getSectionId() << endl;
+		cout << "Course ID   : " << sections[i]->getCourseId() << endl;
+		cout << "Teacher ID  : " << sections[i]->getTeacherId() << endl;
 		cout << "Venue Count : " << venueCount << endl;
 		bool assigned = false;
 		Course* matched = nullptr;
@@ -93,40 +94,39 @@ void Scheduler::generateExamSchedule(Course* courses[], int courseCount)
 		{
 			//Section A kis course ka hai? CS101? CS102?
 			//if (courseId match ho jaye section ke courseId se)
-			if (courses[c]->getCourseId() == sections[i].getCourseId())
+			if (courses[c]->getCourseId() == sections[i]->getCourseId())
 			{
 				matched = courses[c];
 				break;
 			}
 		}
-		for (int v = 0; v < venueCount; v++) 
+		for (int v = 0; v < venueCount; v++)
 		{
 			if (matched != nullptr)
 			{
 				if (!venues[v].canAccommodate(matched->getStudentCount()))
 					continue;
+
 				LabCourse* lab = dynamic_cast<LabCourse*>(matched);
-				//Check if itslab course hai? if lab and no computers cannot use
+
 				if (lab != nullptr && !venues[v].getHasComputers())
 					continue;
 			}
 
 			string slot = suggestNextSlot(venues[v].getRoomId());
-			if (slot == "No slots available") 
-				continue;
-			sections[i].assignVenue(venues[v].getRoomId(), slot); 
-			//void Section::assignVenue(string venueId, string timeSlot)
-			assigned = true;
-			break;
-		}
-		if (!assigned) {
-			cout << "  WARNING: No venue for section "
-				<< sections[i].getSectionId() << endl;
+
+			if (slot != "No slots available")
+			{
+				sections[i]->assignVenue(venues[v].getRoomId(), slot);
+				assigned = true;
+				break;
+			}
 		}
 	}
 ;
 	cout << "Schedule generation complete!" << endl;
 }
+
 
 void Scheduler::saveSchedule()
 {
@@ -138,10 +138,10 @@ void Scheduler::saveSchedule()
 	}
 	file << "EXAM SCHEDULE\n";
 	for (int i = 0; i < sectionCount; i++) {
-		file << "Section : " << sections[i].getSectionId() << "\n";
-		file << "Course  : " << sections[i].getCourseId() << "\n";
-		file << "Venue   : " << sections[i].getVenueId() << "\n";
-		file << "Time    : " << sections[i].getTimeSlot() << "\n";
+		file << "Section : " << sections[i]->getSectionId() << "\n";
+		file << "Course  : " << sections[i]->getCourseId() << "\n";
+		file << "Venue   : " << sections[i]->getVenueId() << "\n";
+		file << "Time    : " << sections[i]->getTimeSlot() << "\n";
 		cout << endl;
 	}
 	file.close();
@@ -157,7 +157,7 @@ void Scheduler::displaySchedule()
 	}
 	cout <<"EXAM SCHEDULE" << endl;
 	for (int i = 0; i < sectionCount; i++) {
-		sections[i].display();//display all scheduled section one by one
+		sections[i]->display();//display all scheduled section one by one
 		cout << endl;
 	}
 }
