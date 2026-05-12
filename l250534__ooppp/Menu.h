@@ -64,4 +64,5 @@ public:
     void teacherMenu();
     void courseMenu();
     void scheduleMenu();
+    double percentageToGPA(double percent);
 };

@@ -9,6 +9,8 @@ ScholarshipStudent::ScholarshipStudent()
     minGPA = 2.0;
     gradeCount = 0;
     status = "Active";
+    totalPoints = 0;
+    totalCredits = 0;
 }
 
 ScholarshipStudent::ScholarshipStudent(string id, string name, string email, double minGPA)
@@ -19,12 +21,16 @@ ScholarshipStudent::ScholarshipStudent(string id, string name, string email, dou
     status = "Active";
 }
 
-void ScholarshipStudent::addGrade(double grade) 
+void ScholarshipStudent::addGrade(double weightedPoints, int credits)
 {
     if (gradeCount < 20)
     {
-        grades[gradeCount] = grade;
+        grades[gradeCount] = weightedPoints;
         gradeCount++;
+
+        totalPoints += weightedPoints;
+        totalCredits += credits;
+
         checkStatus();
     }
 }
@@ -37,14 +43,12 @@ void ScholarshipStudent::checkStatus()
         status = "Active";
 }
 
-double ScholarshipStudent::calculateGPA() 
+double ScholarshipStudent::calculateGPA()
 {
-    if (gradeCount == 0) 
+    if (totalCredits == 0)
         return 0.0;
-    double total = 0;
-    for (int i = 0; i < gradeCount; i++) 
-        total += grades[i];
-    return total / gradeCount;
+
+    return totalPoints / totalCredits;
 }
 
 void ScholarshipStudent::viewTranscript() {

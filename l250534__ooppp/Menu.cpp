@@ -690,6 +690,19 @@ void Menu::enterMarks() {
     double finalGrade = course->calculateFinalGrade();
     cout << "\nFinal Grade: " << finalGrade << "%" << endl;
 
+    double gpaPoints = percentageToGPA(finalGrade);
+
+    int credits = 0;
+
+    if (course->getCourseType() == "Core")
+        credits = 3;
+
+    else if (course->getCourseType() == "Elective")
+        credits = 2;
+
+    else if (course->getCourseType() == "Lab")
+        credits = 0;
+
     // add pass/fail for exchange students
     for (int i = 0; i < exchangeCount; i++) {
         if (course->isStudentEnrolled(exchangeStudents[i].getId())) {
@@ -701,8 +714,36 @@ void Menu::enterMarks() {
                 << (finalGrade >= 50 ? "Pass" : "Fail") << endl;
         }
     }
+    int credits = 0;
 
+    if (course->getCourseType() == "Core")
+        credits = 3;
+    else if (course->getCourseType() == "Elective")
+        credits = 2;
+    else
+        credits = 1;
+
+    double weightedPoints = (finalGrade / 100.0) * 4.0 * credits;
+
+    RegularStudent* r = findRegular(studentId);
+    if (r != nullptr)
+        r->addGrade(weightedPoints, credits);
+
+    ScholarshipStudent* s = findScholarship(studentId);
+    if (s != nullptr)
+        s->addGrade(weightedPoints, credits);
     system("pause");
+}
+
+double Menu::percentageToGPA(double percent)
+{
+    if (percent >= 85) return 4.0;
+    else if (percent >= 80) return 3.7;
+    else if (percent >= 75) return 3.3;
+    else if (percent >= 70) return 3.0;
+    else if (percent >= 65) return 2.7;
+    else if (percent >= 60) return 2.3;
+    else return 0.0;
 }
 
 void Menu::viewTranscript() {

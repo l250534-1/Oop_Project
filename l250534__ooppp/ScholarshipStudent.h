@@ -8,11 +8,13 @@ private:
     int    gradeCount;
     double minGPA;
     string status;
+    double totalPoints;
+    int totalCredits;
 
 public:
     ScholarshipStudent();
     ScholarshipStudent(string id, string name, string email, double minGPA);
-    void   addGrade(double grade);
+    void   addGrade(double grade,int credits);
     void   checkStatus();
     double calculateGPA();
     void   viewTranscript();

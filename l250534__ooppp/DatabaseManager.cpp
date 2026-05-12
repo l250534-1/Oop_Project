@@ -196,9 +196,10 @@ void DatabaseManager::loadRegularStudents(RegularStudent students[], int& count)
         if (line.empty()) continue;
         string id = getPart(line, 0);
         string name = getPart(line, 1);
-        string type = getPart(line, 2);
+        string email = getPart(line, 2); 
+        string type = getPart(line, 3);  
         if (type == "Regular") {
-            students[count] = RegularStudent(id, name, "");
+            students[count] = RegularStudent(id, name, email); 
             count++;
         }
     }
@@ -214,18 +215,19 @@ void DatabaseManager::loadScholarshipStudents(ScholarshipStudent students[], int
         if (line.empty()) continue;
         string id = getPart(line, 0);
         string name = getPart(line, 1);
-        string type = getPart(line, 2);
+        string email = getPart(line, 2);  
+        string type = getPart(line, 3);  
         string extra = getPart(line, 4);
         if (type == "Scholarship") {
             double minGPA = 2.5;
             if (!extra.empty()) minGPA = stod(extra);
-            students[count] = ScholarshipStudent(id, name, "", minGPA);
+            students[count] = ScholarshipStudent(id, name, email, minGPA);
             count++;
         }
     }
     file.close();
 }
-
+ 
 void DatabaseManager::loadExchangeStudents(ExchangeStudent students[], int& count) {
     ifstream file(studentsFile);
     count = 0;
@@ -235,15 +237,15 @@ void DatabaseManager::loadExchangeStudents(ExchangeStudent students[], int& coun
         if (line.empty()) continue;
         string id = getPart(line, 0);
         string name = getPart(line, 1);
-        string type = getPart(line, 2);
+        string email = getPart(line, 2);  
+        string type = getPart(line, 3);  
         if (type == "Exchange") {
-            students[count] = ExchangeStudent(id, name, "");
+            students[count] = ExchangeStudent(id, name, email);  
             count++;
         }
     }
     file.close();
 }
-
 
 void DatabaseManager::saveCourse(Course* c) {
     ofstream file("Courses.txt", ios::app);

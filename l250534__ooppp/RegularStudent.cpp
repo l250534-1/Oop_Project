@@ -14,27 +14,22 @@ RegularStudent::RegularStudent(string id, string name, string email)
     : Student(id, name, email, "Regular") 
 {
     gradeCount = 0;
+    totalPoints = 0;
+    totalCredits = 0;
 }
 
-void RegularStudent::addGrade(double grade) 
+void RegularStudent::addGrade(double weightedpoints,int credits) 
 {
     if (gradeCount < 20) 
     {
-        grades[gradeCount] = grade;
+        grades[gradeCount] = weightedpoints;
         gradeCount++;
+        totalPoints += weightedpoints;
+        totalCredits += credits;
     }
 }
 
-double RegularStudent::calculateGPA() 
-{
-    if (gradeCount == 0)
-        return 0.0;
-    double total = 0;
-    for (int i = 0; i < gradeCount; i++) {
-        total += grades[i];
-    }
-    return total / gradeCount;
-}
+
 
 void RegularStudent::viewTranscript() {
     cout  << endl;
@@ -48,11 +43,19 @@ void RegularStudent::viewTranscript() {
     {
         for (int i = 0; i < gradeCount; i++)
         {
-            cout << "Course " << (i + 1) << " : " << grades[i] << "%" << endl;
+            cout << "Course " << (i + 1) << " : " << grades[i]  << endl;
         }
     }
     cout << "  GPA     : " << calculateGPA() << endl;
     cout  << endl;
+}
+
+double RegularStudent::calculateGPA()
+{
+    if (totalCredits == 0)
+        return 0.0;
+
+    return totalPoints / totalCredits;
 }
 
 void RegularStudent::displayProfile() {

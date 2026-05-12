@@ -1,0 +1,3 @@
+cs1001|PF|101|Core
+cs1002|PF|102|Elective
+cs1003|OOP|102|Lab
