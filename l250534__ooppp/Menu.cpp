@@ -194,19 +194,17 @@ void Menu::addStudent() {
     string name = getStringInput("Enter Name  :");
     string email = getStringInput("Enter Email :");
 
-    bool found = false;
-    for (int i = 0; i < email.length(); i++)
-    {
-        if (email[i] == '@')
-        {
-            found = true;
-            break;
+    do {
+        email = getStringInput("Enter Email : ");
+        bool found = false;
+        for (int i = 0; i < (int)email.length(); i++) {
+            if (email[i] == '@') { found = true; break; }
         }
-    }
-    if (!found)
-    {
-        cout << "Invalid Email" << endl;
-    }
+        if (!found)
+            cout << "ERROR: Invalid email! Must contain @" << endl;
+        else
+            break;
+    } while (true);
 
     cout << "\nStudent Type:\n" << endl;
     cout << "1 = Regular" << endl;
@@ -229,12 +227,13 @@ void Menu::addStudent() {
     }
     else if (type == 2) {
         double minGPA = 0;
-        while (minGPA <= 0 || minGPA > 4.0)
+      
+        do
         {
             minGPA = getDoubleInput("Enter minimum GPA (0.1-4.0): ");
             if (minGPA <= 0 || minGPA > 4.0)
                 cout << "ERROR: GPA must be between 0.1 and 4.0!" << endl;
-        }
+        } while (minGPA <= 0 || minGPA > 4.0);
 
         scholarshipStudents[scholarshipCount] = ScholarshipStudent(id, name, email, minGPA);
         db.saveStudent(id, name, "Scholarship", 0.0, to_string(minGPA));
