@@ -39,18 +39,20 @@ void ScholarshipStudent::checkStatus()
 
 double ScholarshipStudent::calculateGPA() 
 {
-    if (gradeCount == 0) return 0.0;
+    if (gradeCount == 0) 
+        return 0.0;
     double total = 0;
-    for (int i = 0; i < gradeCount; i++) total += grades[i];
+    for (int i = 0; i < gradeCount; i++) 
+        total += grades[i];
     return total / gradeCount;
 }
 
 void ScholarshipStudent::viewTranscript() {
     cout << endl;
-    cout << "  TRANSCRIPT: " << name << endl;
+    cout << "TRANSCRIPT: " << name << endl;
     cout  << endl;
     if (gradeCount == 0) {
-        cout << "  No grades yet." << endl;
+        cout << "No grades yet." << endl;
     }
     else {
         for (int i = 0; i < gradeCount; i++)
@@ -58,25 +60,23 @@ void ScholarshipStudent::viewTranscript() {
             cout << "  Course " << (i + 1) << " : " << grades[i] << "%" << endl;
         }
     }
-    cout << "  GPA     : " << calculateGPA() << endl;
-    cout << "  Min GPA : " << minGPA << endl;
-    cout << "  Status  : " << status << endl;
+    cout << "GPA     : " << calculateGPA() << endl;
+    cout << "Status  : " << status << endl;
     if (status == "Probation") {
-        cout << "  !! WARNING: GPA below minimum !!" << endl;
+        cout << "!! WARNING: GPA below minimum !!" << endl;
     }
     cout  << endl;
 }
 
 void ScholarshipStudent::displayProfile() {
     cout  << endl;
-    cout << "   SCHOLARSHIP STUDENT" << endl;
+    cout << "SCHOLARSHIP STUDENT" << endl;
     cout  << endl;
-    cout << "  ID      : " << id << endl;
-    cout << "  Name    : " << name << endl;
-    cout << "  Email   : " << email << endl;
-    cout << "  GPA     : " << calculateGPA() << endl;
-    cout << "  Min GPA : " << minGPA << endl;
-    cout << "  Status  : " << status << endl;
+    cout << "ID      : " << id << endl;
+    cout << "Name    : " << name << endl;
+    cout << "Email   : " << email << endl;
+    cout << "GPA     : " << calculateGPA() << endl;
+    cout << "Status  : " << status << endl;
     cout  << endl;
 }
 
