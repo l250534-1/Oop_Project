@@ -38,15 +38,17 @@ double RegularStudent::calculateGPA()
 
 void RegularStudent::viewTranscript() {
     cout  << endl;
-    cout << "  TRANSCRIPT: " << name << endl;
+    cout << "TRANSCRIPT: " << name << endl;
     cout << endl;
-    if (gradeCount == 0) {
-    cout << "  No grades yet." << endl;
+    if (gradeCount == 0)
+    {
+    cout << "No grades yet." << endl;
     }
-    else {
+    else 
+    {
         for (int i = 0; i < gradeCount; i++)
         {
-            cout << "  Course " << (i + 1) << " : " << grades[i] << "%" << endl;
+            cout << "Course " << (i + 1) << " : " << grades[i] << "%" << endl;
         }
     }
     cout << "  GPA     : " << calculateGPA() << endl;
@@ -55,11 +57,11 @@ void RegularStudent::viewTranscript() {
 
 void RegularStudent::displayProfile() {
     cout << endl;
-    cout << "     REGULAR STUDENT" << endl;
+    cout << "REGULAR STUDENT" << endl;
     cout<< endl;
-    cout << "  ID    : " << id << endl;
-    cout << "  Name  : " << name << endl;
-    cout << "  Email : " << email << endl;
-    cout << "  GPA   : " << calculateGPA() << endl;
+    cout << "ID    : " << id << endl;
+    cout << "Name  : " << name << endl;
+    cout << "Email : " << email << endl;
+    cout << "GPA   : " << calculateGPA() << endl;
     cout <<endl;
 }

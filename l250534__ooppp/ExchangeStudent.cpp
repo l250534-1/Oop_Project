@@ -25,36 +25,38 @@ void ExchangeStudent::addResult(string passFail)
     }
 }
 
-double ExchangeStudent::calculateGPA() 
-{ 
-    return 0.0;
-}
 
 void ExchangeStudent::viewTranscript() {
     cout <<  endl;
-    cout << "  TRANSCRIPT: " << name << endl;
-    cout << "  (Exchange : Pass/Fail only)" << endl;
+    cout << "TRANSCRIPT: " << name << endl;
+    cout << "(Exchange : Pass/Fail only)" << endl;
     cout << endl;
     if (resultCount == 0) 
     {
-        cout << "  No results yet." << endl;
+        cout << "No results yet." << endl;
     }
-    else {
+    else
+    {
         for (int i = 0; i < resultCount; i++) 
         {
-            cout << "  Course " << (i + 1) << " : " << results[i] << endl;
+            cout << "Course " << (i + 1) << " : " << results[i] << endl;
         }
     }
     cout << endl;
 }
+double ExchangeStudent::calculateGPA()
+{
+    return 0.0;
+}
+
 
 void ExchangeStudent::displayProfile() {
     cout  << endl;
-    cout << "     EXCHANGE STUDENT" << endl;
+    cout << "EXCHANGE STUDENT" << endl;
     cout  << endl;
-    cout << "  ID    : " << id << endl;
-    cout << "  Name  : " << name << endl;
-    cout << "  Email : " << email << endl;
-    cout << "  Type  : Exchange (Pass/Fail only)" << endl;
+    cout << "ID    : " << id << endl;
+    cout << "Name  : " << name << endl;
+    cout << "Email : " << email << endl;
+    cout << "Type  : Exchange (Pass/Fail only)" << endl;
     cout  << endl;
 }

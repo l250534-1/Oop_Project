@@ -37,6 +37,8 @@ void Teacher::addFeedback(int rating)
     }
 }
 
+
+
 double Teacher::getAverageScore()
 {
     if (feedbackCount == 0) {
@@ -46,6 +48,7 @@ double Teacher::getAverageScore()
     for (int i = 0; i < feedbackCount; i++) 
     {
         total += feedbackScores[i];
+
     }
     return total / feedbackCount;
 }
@@ -59,7 +62,7 @@ void Teacher::assignCourse(string courseId)
     }
 }
 
-int    Teacher::getCourseCount() 
+int Teacher::getCourseCount() 
 {
     return courseCount; 
 }

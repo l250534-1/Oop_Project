@@ -253,7 +253,7 @@ void Menu::addStudent() {
 
 void Menu::viewAllStudents() {
 
-    cout << "Add Teacher" << endl;
+    cout << "Students" << endl;
     int total = regularCount + scholarshipCount + exchangeCount;
     if (total == 0)
     {
@@ -590,6 +590,7 @@ void Menu::enterMarks() {
     }
     string courseId;
     Course* course;
+    string studentId;
     do
     {
         courseId = getStringInput("Enter Course ID : ");
@@ -597,6 +598,21 @@ void Menu::enterMarks() {
         if (course == nullptr)
             cout << "ERROR: Course not found! Try again." << endl;
     } while (course == nullptr);
+
+    do {
+        studentId = getStringInput("Enter Student ID : ");
+
+        bool exists =
+            findRegular(studentId) != nullptr ||
+            findScholarship(studentId) != nullptr ||
+            findExchange(studentId) != nullptr;
+
+        if (!exists)
+            cout << "ERROR: Student not found!" << endl;
+        else
+            break;
+
+    } while (true);
 
     cout << "\nAssessment Type:" << endl;
     cout << "1 = Exam" << endl;
@@ -656,7 +672,21 @@ void Menu::enterMarks() {
 
     cout << endl;
     course->displayAssessments();
-    cout << "\nFinal Grade: " << course->calculateFinalGrade() << "%" << endl;
+    double finalGrade = course->calculateFinalGrade();
+    cout << "\nFinal Grade: " << finalGrade << "%" << endl;
+
+    // add pass/fail for exchange students
+    for (int i = 0; i < exchangeCount; i++) {
+        if (course->isStudentEnrolled(exchangeStudents[i].getId())) {
+            if (finalGrade >= 50)
+                exchangeStudents[i].addResult("Pass");
+            else
+                exchangeStudents[i].addResult("Fail");
+            cout << exchangeStudents[i].getName() << " result: "
+                << (finalGrade >= 50 ? "Pass" : "Fail") << endl;
+        }
+    }
+
     system("pause");
 }
 

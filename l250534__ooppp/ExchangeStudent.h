@@ -7,15 +7,15 @@ class ExchangeStudent : public Student {
 
 private:
     string results[20];
-    int    resultCount;
+    int resultCount;
 
 public:
     ExchangeStudent();
     ExchangeStudent(string id, string name, string email);
-    void   addResult(string passFail);
+    void addResult(string passFail);
     double calculateGPA();
-    void   viewTranscript();
-    void   displayProfile();
+    void viewTranscript();
+    void displayProfile();
 };
 
 

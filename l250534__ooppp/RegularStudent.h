@@ -11,8 +11,8 @@ private:
 public:
     RegularStudent();
     RegularStudent(string id, string name, string email);
-    void   addGrade(double grade);
+    void addGrade(double grade);
     double calculateGPA();
-    void   viewTranscript();
-    void   displayProfile();
+    void viewTranscript();
+    void displayProfile();
 };
