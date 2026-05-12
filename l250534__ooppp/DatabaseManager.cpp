@@ -245,4 +245,78 @@ void DatabaseManager::loadExchangeStudents(ExchangeStudent students[], int& coun
 }
 
 
+void DatabaseManager::saveCourse(Course* c) {
+    ofstream file("Courses.txt", ios::app);
+    if (file.is_open()) {
+        file << c->getCourseId() << "|"
+            << c->getTitle() << "|"
+            << c->getTeacherId() << "|"
+            << c->getCourseType() << "\n";
+        file.close();
+    }
+}
+
+void DatabaseManager::loadCourses(Course* courses[], int& count) {
+    ifstream file("Courses.txt");
+    count = 0;
+    if (!file.is_open()) return;
+    string line;
+    while (getline(file, line) && count < 50) {
+        if (line.empty()) continue;
+        string id = getPart(line, 0);
+        string title = getPart(line, 1);
+        string teacher = getPart(line, 2);
+        string type = getPart(line, 3);
+        if (type == "Core")
+            courses[count] = new CoreCourse(id, title, teacher);
+        else if (type == "Elective")
+            courses[count] = new ElectiveCourse(id, title, teacher);
+        else if (type == "Lab")
+            courses[count] = new LabCourse(id, title, teacher);
+        count++;
+    }
+    file.close();
+}
+
+void DatabaseManager::saveAssessment(string courseId, Assessment* a) {
+    ofstream file("assessments.txt", ios::app);
+    if (file.is_open()) {
+        file << courseId << "|"
+            << a->getType() << "|"
+            << a->getRawScore() << "|"
+            << a->getMaxScore() << "|"
+            << a->getWeightage() << "\n";
+        file.close();
+    }
+}
+
+void DatabaseManager::loadAssessments(Course* courses[], int courseCount) {
+    ifstream file("assessments.txt");
+    if (!file.is_open()) return;
+    string line;
+    while (getline(file, line)) {
+        if (line.empty()) continue;
+        string courseId = getPart(line, 0);
+        string type = getPart(line, 1);
+        double raw = stod(getPart(line, 2));
+        double max = stod(getPart(line, 3));
+        double weightage = stod(getPart(line, 4));
+
+        // find matching course
+        for (int i = 0; i < courseCount; i++) {
+            if (courses[i]->getCourseId() == courseId) {
+                if (type == "Exam")
+                    courses[i]->addAssessment(new Exam(raw, max, weightage));
+                else if (type == "Quiz")
+                    courses[i]->addAssessment(new Quiz(raw, max, weightage));
+                else if (type == "Assignment")
+                    courses[i]->addAssessment(new Assignment(raw, max, weightage));
+                break;
+            }
+        }
+    }
+    file.close();
+}
+
+
 

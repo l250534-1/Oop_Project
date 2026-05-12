@@ -19,6 +19,8 @@ Menu::Menu()
     db.loadRegularStudents(regularStudents, regularCount);
     db.loadScholarshipStudents(scholarshipStudents, scholarshipCount);
     db.loadExchangeStudents(exchangeStudents, exchangeCount);
+    db.loadCourses(courses, courseCount);
+    db.loadAssessments(courses, courseCount);
     for (int i = 0; i < venueCount; i++)
         scheduler.addVenue(venues[i]);
     for (int i = 0; i < sectionCount; i++)
@@ -389,6 +391,7 @@ void Menu::addCourse() {
         courses[courseCount] = new LabCourse(id, title, teacherId);
 
     courseCount++;
+    db.saveCourse(courses[courseCount - 1]);
     cout << "\nCourse added successfully!" << endl;
     system("pause");
 }
@@ -666,12 +669,21 @@ void Menu::enterMarks() {
             cout << "ERROR: Weightage must be between 1 and 100!" << endl;
     }
 
-    if (type == 1)
-        course->addAssessment(new Exam(raw, max, wt));
-    else if (type == 2)
-        course->addAssessment(new Quiz(raw, max, wt));
-    else
-        course->addAssessment(new Assignment(raw, max, wt));
+    if (type == 1) {
+        Exam* ex = new Exam(raw, max, wt);
+        course->addAssessment(ex);
+        db.saveAssessment(courseId, ex);
+    }
+    else if (type == 2) {
+        Quiz* qz = new Quiz(raw, max, wt);
+        course->addAssessment(qz);
+        db.saveAssessment(courseId, qz);
+    }
+    else {
+        Assignment* as = new Assignment(raw, max, wt);
+        course->addAssessment(as);
+        db.saveAssessment(courseId, as);
+    }
 
     cout << endl;
     course->displayAssessments();
