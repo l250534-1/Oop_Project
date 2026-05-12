@@ -12,7 +12,7 @@ Student::Student(string id, string name, string email, string type)
 void Student::enrollinCourse(string courseId) {
     if (enrolledCount >= 20) 
     {
-        cout << "  ERROR: Cannot enroll — max 20 courses reached!" << endl;
+        cout << "  ERROR: Cannot enroll max 20 courses reached!" << endl;
         return;
     }
     enrolledCourse_ids[enrolledCount] = courseId;
