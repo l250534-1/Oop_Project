@@ -519,7 +519,8 @@ void Menu::registerStudentToCourse() {
         return;
     }
 
-    if (course->isStudentEnrolled(studentId)) {
+    if (course->isStudentEnrolled(studentId))
+    {
         cout << "ERROR: Student already enrolled in this course!" << endl;
         system("pause");
         return;

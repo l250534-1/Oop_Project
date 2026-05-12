@@ -2,7 +2,8 @@
 #include <iostream>
 using namespace std;
 
-AcademicEntity::AcademicEntity(string id, string name, string email) {
+AcademicEntity::AcademicEntity(string id, string name, string email)
+{
     this->id = id;
     this->name = name;
     this->email = email;
