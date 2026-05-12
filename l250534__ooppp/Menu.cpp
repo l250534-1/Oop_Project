@@ -357,10 +357,14 @@ void Menu::addCourse() {
     }
 
     string title = getStringInput("Enter Title      : ");
-    string teacherId = getStringInput("Enter Teacher ID : ");
-
-    if (findTeacher(teacherId) == nullptr)
-        cout << "WARNING: Teacher ID not found in system." << endl;
+   
+    string teacherId;
+    do
+    {
+        teacherId = getStringInput("Enter Teacher ID : ");
+        if (findTeacher(teacherId) == nullptr)
+            cout << "ERROR: Teacher not found! Enter valid Teacher ID." << endl;
+    } while (findTeacher(teacherId) == nullptr);
 
     cout << "\nCourse Type:" << endl;
     cout << "1 = Core (3hr exam)" << endl;
