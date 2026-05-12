@@ -16,6 +16,9 @@ Menu::Menu()
     db.loadVenues(venues, venueCount);
     db.loadSections(sections, sectionCount);
 
+    db.loadRegularStudents(regularStudents, regularCount);
+    db.loadScholarshipStudents(scholarshipStudents, scholarshipCount);
+    db.loadExchangeStudents(exchangeStudents, exchangeCount);
     for (int i = 0; i < venueCount; i++)
         scheduler.addVenue(venues[i]);
     for (int i = 0; i < sectionCount; i++)
@@ -221,7 +224,7 @@ void Menu::addStudent() {
 
     if (type == 1) {
         regularStudents[regularCount] = RegularStudent(id, name, email);
-        db.saveStudent(id, name, "Regular", 0.0, "");
+        db.saveStudent(id, name, email, "Regular", "");
         regularCount++;
         cout << "\nRegular Student added!" << endl;
     }
@@ -236,14 +239,14 @@ void Menu::addStudent() {
         } while (minGPA <= 0 || minGPA > 4.0);
 
         scholarshipStudents[scholarshipCount] = ScholarshipStudent(id, name, email, minGPA);
-        db.saveStudent(id, name, "Scholarship", 0.0, to_string(minGPA));
+        db.saveStudent(id, name, email, "Scholarship", to_string(minGPA));
         scholarshipCount++;
         cout << "\nScholarship Student added!" << endl;
     }
     else
     {
         exchangeStudents[exchangeCount] = ExchangeStudent(id, name, email);
-        db.saveStudent(id, name, "Exchange", 0.0, "");
+        db.saveStudent(id, name, email, "Exchange", "");
         exchangeCount++;
         cout << "\nExchange Student added!" << endl;
     }

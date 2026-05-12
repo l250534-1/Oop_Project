@@ -47,12 +47,14 @@ void DatabaseManager::saveTeacher(Teacher& t)
     }
 }
 
-void DatabaseManager::saveStudent(string id, string name, string type, double gpa, string extra) 
-{
+void DatabaseManager::saveStudent(string id, string name, string email, string type, string extra) {
     ofstream file(studentsFile, ios::app);
-    if (file.is_open())
-    {
-        file << id << "|" << name << "|" << type << "|" << gpa << "|" << extra << "\n";
+    if (file.is_open()) {
+        file << id << "|"
+            << name << "|"
+            << email << "|"
+            << type << "|"
+            << extra << "\n";
         file.close();
     }
 }
@@ -180,6 +182,64 @@ void DatabaseManager::loadSections(Section sections[], int& count)
         sections[count] = Section(sid, cid, tid);
         sections[count].assignVenue(vid, slot);
         count++;
+    }
+    file.close();
+}
+
+
+void DatabaseManager::loadRegularStudents(RegularStudent students[], int& count) {
+    ifstream file(studentsFile);
+    count = 0;
+    if (!file.is_open()) return;
+    string line;
+    while (getline(file, line) && count < 50) {
+        if (line.empty()) continue;
+        string id = getPart(line, 0);
+        string name = getPart(line, 1);
+        string type = getPart(line, 2);
+        if (type == "Regular") {
+            students[count] = RegularStudent(id, name, "");
+            count++;
+        }
+    }
+    file.close();
+}
+
+void DatabaseManager::loadScholarshipStudents(ScholarshipStudent students[], int& count) {
+    ifstream file(studentsFile);
+    count = 0;
+    if (!file.is_open()) return;
+    string line;
+    while (getline(file, line) && count < 50) {
+        if (line.empty()) continue;
+        string id = getPart(line, 0);
+        string name = getPart(line, 1);
+        string type = getPart(line, 2);
+        string extra = getPart(line, 4);
+        if (type == "Scholarship") {
+            double minGPA = 2.5;
+            if (!extra.empty()) minGPA = stod(extra);
+            students[count] = ScholarshipStudent(id, name, "", minGPA);
+            count++;
+        }
+    }
+    file.close();
+}
+
+void DatabaseManager::loadExchangeStudents(ExchangeStudent students[], int& count) {
+    ifstream file(studentsFile);
+    count = 0;
+    if (!file.is_open()) return;
+    string line;
+    while (getline(file, line) && count < 50) {
+        if (line.empty()) continue;
+        string id = getPart(line, 0);
+        string name = getPart(line, 1);
+        string type = getPart(line, 2);
+        if (type == "Exchange") {
+            students[count] = ExchangeStudent(id, name, "");
+            count++;
+        }
     }
     file.close();
 }
