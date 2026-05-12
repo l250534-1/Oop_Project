@@ -1,4 +1,5 @@
 #pragma once
+//student, Course , Assessment added through its derived classes
 #include "Teacher.h"
 #include "RegularStudent.h"
 #include "ScholarshipStudent.h"
@@ -15,12 +16,15 @@
 #include<string>
 using namespace std;
 
-class DatabaseManager {
+class DatabaseManager 
+{
 private:
     string studentsFile;
     string teachersFile;
     string venuesFile;
     string sectionsFile;
+    string coursesFile;
+    string assessmentsFile;
     string getPart(string line, int index);
 
 public:

@@ -74,7 +74,7 @@ void DatabaseManager::loadTeachers(Teacher teachers[], int& count)
     if (!file.is_open())
         return;
     string line;
-    while (getline(file, line) && count < 50)//till EOF
+    while (getline(file, line) && count < 50)//till EOF    when\n new line 
     {
         if (line.empty()) 
             continue;
@@ -134,7 +134,8 @@ void DatabaseManager::loadStudents(Student* students[], int& count)
 void DatabaseManager::saveVenue(Venue& v) 
 {
     ofstream file(venuesFile, ios::app);
-    if (file.is_open()) {
+    if (file.is_open()) 
+    {
         file << v.getRoomId() << "|"
             << v.getCapacity() << "|"
             << v.getHasComputers() << "\n";
@@ -168,8 +169,8 @@ void DatabaseManager::loadVenues(Venue venues[], int& count)
         if (line.empty()) 
             continue;
         string roomId = getPart(line, 0);
-        int    cap = stoi(getPart(line, 1));
-        bool   comp = stoi(getPart(line, 2));
+        int  cap = stoi(getPart(line, 1)); //string to int
+        bool comp = stoi(getPart(line, 2));
         venues[count] = Venue(roomId, cap, comp);
         count++;
     }
@@ -202,10 +203,13 @@ void DatabaseManager::loadSections(Section sections[], int& count)
 void DatabaseManager::loadRegularStudents(RegularStudent students[], int& count) {
     ifstream file(studentsFile);
     count = 0;
-    if (!file.is_open()) return;
+    if (!file.is_open()) 
+        return;
     string line;
-    while (getline(file, line) && count < 50) {
-        if (line.empty()) continue;
+    while (getline(file, line) && count < 50)
+    {
+        if (line.empty()) 
+            continue;
         string id = getPart(line, 0);
         string name = getPart(line, 1);
         string email = getPart(line, 2); 
@@ -221,18 +225,22 @@ void DatabaseManager::loadRegularStudents(RegularStudent students[], int& count)
 void DatabaseManager::loadScholarshipStudents(ScholarshipStudent students[], int& count) {
     ifstream file(studentsFile);
     count = 0;
-    if (!file.is_open()) return;
+    if (!file.is_open())
+        return;
     string line;
     while (getline(file, line) && count < 50) {
-        if (line.empty()) continue;
+        if (line.empty()) 
+            continue;
         string id = getPart(line, 0);
         string name = getPart(line, 1);
         string email = getPart(line, 2);  
         string type = getPart(line, 3);  
-        string extra = getPart(line, 4);
-        if (type == "Scholarship") {
-            double minGPA = 2.5;
-            if (!extra.empty()) minGPA = stod(extra);
+        string mingpa = getPart(line, 4);
+        if (type == "Scholarship")
+        {
+            double minGPA = 2.0;
+            if (!mingpa.empty()) 
+                minGPA = stod(mingpa);//string to double
             students[count] = ScholarshipStudent(id, name, email, minGPA);
             count++;
         }
@@ -263,7 +271,8 @@ void DatabaseManager::loadExchangeStudents(ExchangeStudent students[], int& coun
 
 void DatabaseManager::saveCourse(Course* c) {
     ofstream file(coursesFile, ios::app);
-    if (file.is_open()) {
+    if (file.is_open())
+    {
         file << c->getCourseId() << "|"
             << c->getTitle() << "|"
             << c->getTeacherId() << "|"
@@ -298,7 +307,8 @@ void DatabaseManager::loadCourses(Course* courses[], int& count) {
 
 void DatabaseManager::saveAssessment(string courseId, Assessment* a) {
     ofstream file(assessmentsFile, ios::app);
-    if (file.is_open()) {
+    if (file.is_open())
+    {
         file << courseId << "|"
             << a->getStudentId() << "|"
             << a->getType() << "|"
@@ -312,13 +322,15 @@ void DatabaseManager::saveAssessment(string courseId, Assessment* a) {
 void DatabaseManager::loadAssessments(Course* courses[], int courseCount)
 {
     ifstream file(assessmentsFile);
-    if (!file.is_open()) return;
+    if (!file.is_open()) 
+        return;
 
     string line;
 
     while (getline(file, line))
     {
-        if (line.empty()) continue;
+        if (line.empty()) 
+            continue;
 
         string courseId = getPart(line, 0);
         string studentId = getPart(line, 1);
