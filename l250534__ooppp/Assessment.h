@@ -9,14 +9,16 @@ protected:
     double rawScore;
     double maxScore;
     double weightage;
+    string studentId;
 
 public:
-    Assessment(string type, double rawScore, double maxScore, double weightage);
+    Assessment(string id,string type, double rawScore, double maxScore, double weightage);
     virtual double calculateWeightedScore() = 0;//abstarct class
     virtual void   display() = 0;
     string getType();
     double getRawScore();
     double getMaxScore();
     double getWeightage();
+    string getStudentId();
     virtual ~Assessment();
 };

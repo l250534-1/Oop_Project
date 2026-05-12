@@ -2,8 +2,8 @@
 #include <iostream>
 using namespace std;
 
-Assignment::Assignment(double rawScore, double maxScore, double weightage)
-    : Assessment("Assignment", rawScore, maxScore, weightage) {
+Assignment::Assignment(string studentId,double rawScore, double maxScore, double weightage)
+    : Assessment(studentId, "Assignment", rawScore, maxScore, weightage) {
 }
 
 double Assignment::calculateWeightedScore() {

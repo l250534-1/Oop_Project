@@ -2,8 +2,8 @@
 #include <iostream>
 using namespace std;
 
-Quiz::Quiz(double rawScore, double maxScore, double weightage)
-    : Assessment("Quiz", rawScore, maxScore, weightage) {
+Quiz::Quiz(string studentId,double rawScore, double maxScore, double weightage)
+    : Assessment (studentId, "Quiz", rawScore, maxScore, weightage) {
 }
 
 double Quiz::calculateWeightedScore() {

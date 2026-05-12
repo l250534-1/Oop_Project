@@ -670,17 +670,17 @@ void Menu::enterMarks() {
     }
 
     if (type == 1) {
-        Exam* ex = new Exam(raw, max, wt);
+        Exam* ex = new Exam(studentId,raw, max, wt);
         course->addAssessment(ex);
         db.saveAssessment(courseId, ex);
     }
     else if (type == 2) {
-        Quiz* qz = new Quiz(raw, max, wt);
+        Quiz* qz = new Quiz(studentId,raw, max, wt);
         course->addAssessment(qz);
         db.saveAssessment(courseId, qz);
     }
     else {
-        Assignment* as = new Assignment(raw, max, wt);
+        Assignment* as = new Assignment(studentId,raw, max, wt);
         course->addAssessment(as);
         db.saveAssessment(courseId, as);
     }
@@ -692,16 +692,7 @@ void Menu::enterMarks() {
 
     double gpaPoints = percentageToGPA(finalGrade);
 
-    int credits = 0;
-
-    if (course->getCourseType() == "Core")
-        credits = 3;
-
-    else if (course->getCourseType() == "Elective")
-        credits = 2;
-
-    else if (course->getCourseType() == "Lab")
-        credits = 0;
+ 
 
     // add pass/fail for exchange students
     for (int i = 0; i < exchangeCount; i++) {

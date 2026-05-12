@@ -2,8 +2,9 @@
 #include <iostream>
 using namespace std;
 
-Assessment::Assessment(string type, double rawScore, double maxScore, double weightage)
+Assessment::Assessment(string studentId, string type, double rawScore, double maxScore, double weightage)
 {
+    this->studentId = studentId;
     this->type = type;
     this->rawScore = rawScore;
     this->maxScore = maxScore;
@@ -21,5 +22,9 @@ double Assessment::getMaxScore() {
 }
 double Assessment::getWeightage() {
     return weightage;
+}
+string Assessment::getStudentId()
+{
+    return studentId;
 }
 Assessment::~Assessment() {}

@@ -74,6 +74,7 @@ int    Course::getStudentCount() {
     return studentCount; 
 }
 
+
 Course::~Course() {
     for (int i = 0; i < assessmentCount; i++) {
         delete assessments[i];

@@ -2,8 +2,8 @@
 #include <iostream>
 using namespace std;
 
-Exam::Exam(double rawScore, double maxScore, double weightage)
-    : Assessment("Exam", rawScore, maxScore, weightage)
+Exam::Exam(string studentId,double rawScore, double maxScore, double weightage)
+    : Assessment(studentId, "Exam", rawScore, maxScore, weightage)
 {
 }
 

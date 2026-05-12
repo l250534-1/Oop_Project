@@ -3,7 +3,7 @@
 
 class Exam : public Assessment {
 public:
-    Exam(double rawScore, double maxScore, double weightage);
+    Exam(string studentId, double rawScore, double maxScore, double weightage);
     double calculateWeightedScore();
     void   display();
 };

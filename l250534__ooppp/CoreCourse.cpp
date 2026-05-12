@@ -5,11 +5,14 @@ CoreCourse::CoreCourse(string courseId, string title, string teacherId)
     : Course(courseId, title, teacherId, "Core") {
 }
 
-double CoreCourse::calculateFinalGrade() {
+double CoreCourse::calculateFinalGrade(string studentId) {
     double total = 0;
     for (int i = 0; i < assessmentCount; i++)
 
-        total += assessments[i]->calculateWeightedScore();//declared in assssment.h(abstract)
+        if (assessments[i]->getStudentId() == studentId)
+        {
+            total += assessments[i]->calculateWeightedScore();
+        }
     return total;
 }
 

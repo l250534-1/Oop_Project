@@ -4,7 +4,7 @@
 
 class Assignment : public Assessment {
 public:
-    Assignment(double rawScore, double maxScore, double weightage);
+    Assignment(string studentId, double rawScore, double maxScore, double weightage);
     double calculateWeightedScore();
     void   display();
 };

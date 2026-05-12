@@ -284,6 +284,7 @@ void DatabaseManager::saveAssessment(string courseId, Assessment* a) {
     ofstream file("assessments.txt", ios::app);
     if (file.is_open()) {
         file << courseId << "|"
+            << a->getStudentId() << "|"
             << a->getType() << "|"
             << a->getRawScore() << "|"
             << a->getMaxScore() << "|"
@@ -292,32 +293,39 @@ void DatabaseManager::saveAssessment(string courseId, Assessment* a) {
     }
 }
 
-void DatabaseManager::loadAssessments(Course* courses[], int courseCount) {
+void DatabaseManager::loadAssessments(Course* courses[], int courseCount)
+{
     ifstream file("assessments.txt");
     if (!file.is_open()) return;
-    string line;
-    while (getline(file, line)) {
-        if (line.empty()) continue;
-        string courseId = getPart(line, 0);
-        string type = getPart(line, 1);
-        double raw = stod(getPart(line, 2));
-        double max = stod(getPart(line, 3));
-        double weightage = stod(getPart(line, 4));
 
-        // find matching course
-        for (int i = 0; i < courseCount; i++) {
-            if (courses[i]->getCourseId() == courseId) {
+    string line;
+
+    while (getline(file, line))
+    {
+        if (line.empty()) continue;
+
+        string courseId = getPart(line, 0);
+        string studentId = getPart(line, 1);
+        string type = getPart(line, 2);
+        double raw = stod(getPart(line, 3));
+        double max = stod(getPart(line, 4));
+        double weightage = stod(getPart(line, 5));
+
+        for (int i = 0; i < courseCount; i++)
+        {
+            if (courses[i]->getCourseId() == courseId)
+            {
                 if (type == "Exam")
-                    courses[i]->addAssessment(new Exam(raw, max, weightage));
+                    courses[i]->addAssessment(new Exam(studentId, raw, max, weightage));
                 else if (type == "Quiz")
-                    courses[i]->addAssessment(new Quiz(raw, max, weightage));
-                else if (type == "Assignment")
-                    courses[i]->addAssessment(new Assignment(raw, max, weightage));
+                    courses[i]->addAssessment(new Quiz(studentId, raw, max, weightage));
+                else
+                    courses[i]->addAssessment(new Assignment(studentId, raw, max, weightage));
+
                 break;
             }
         }
     }
-    file.close();
 }
 
 
