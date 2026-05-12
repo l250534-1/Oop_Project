@@ -83,6 +83,10 @@ void Scheduler::generateExamSchedule(Course* courses[], int courseCount)
 	cout << "Generating exam schedule" << endl;
 	for (int i = 0; i < sectionCount; i++)//Schedule one section at a time
 	{
+		cout << "SECTION DEBUG: " << sections[i].getSectionId() << endl;
+		cout << "Course ID   : " << sections[i].getCourseId() << endl;
+		cout << "Teacher ID  : " << sections[i].getTeacherId() << endl;
+		cout << "Venue Count : " << venueCount << endl;
 		bool assigned = false;
 		Course* matched = nullptr;
 		for (int c = 0; c < courseCount; c++)
@@ -120,6 +124,7 @@ void Scheduler::generateExamSchedule(Course* courses[], int courseCount)
 				<< sections[i].getSectionId() << endl;
 		}
 	}
+;
 	cout << "Schedule generation complete!" << endl;
 }
 

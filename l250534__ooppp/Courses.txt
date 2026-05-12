@@ -1,3 +1,1 @@
-1|MVC|100|Core
-2|PF|101|Elective
-3|OOP|101|Lab
+1|mvc|100|Lab

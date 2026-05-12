@@ -192,8 +192,16 @@ void DatabaseManager::loadSections(Section sections[], int& count)
         string tid = getPart(line, 2);
         string vid = getPart(line, 3);
         string slot = getPart(line, 4);
-        sections[count] = Section(sid, cid, tid);
+        Section temp(sid, cid, tid);
+        if (vid != "Unassigned" && slot != "Unassigned")
+        {
+            temp.assignVenue(vid, slot);
+        }
+     /*   sections[count] = Section(sid, cid, tid);
         sections[count].assignVenue(vid, slot);
+        count++;*/
+
+        sections[count] = temp;
         count++;
     }
     file.close();

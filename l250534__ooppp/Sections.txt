@@ -1,9 +1,3 @@
-1|cs1001|100|Unassigned|Unassigned
-2|cs1001|123|Unassigned|Unassigned
-20|2|101|Unassigned|Unassigned
-3|3|102|Unassigned|Unassigned
-123|1|100|Unassigned|Unassigned
-9|1|100|Unassigned|Unassigned
-01|1|100|Unassigned|Unassigned
-02|2|101|Unassigned|Unassigned
-03|1|101|Unassigned|Unassigned
+1|1|100|Unassigned|Unassigned
+3|1|100|Unassigned|Unassigned
+5|1|100|Unassigned|Unassigned

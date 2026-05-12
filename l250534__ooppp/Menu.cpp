@@ -823,6 +823,7 @@ void Menu::generateSchedule() {
 
     scheduler.generateExamSchedule(courses, courseCount);
     scheduler.saveSchedule();
+
     system("pause");
 }
 

@@ -1,33 +1,9 @@
 EXAM SCHEDULE
 Section : 1
-Course  : cs1001
-Venue   : 1
+Course  : 1
+Venue   : 01
 Time    : Mon 08:00-11:00
-Section : 2
-Course  : cs1001
-Venue   : 1
-Time    : Mon 11:30-14:30
-Section : 20
-Course  : 2
-Venue   : 1
-Time    : Mon 15:00-17:00
 Section : 3
-Course  : 3
-Venue   : 1
-Time    : Mon 17:00-18:00
-Section : 123
 Course  : 1
-Venue   : 1
-Time    : Tue 8:00-10:00
-Section : 9
-Course  : 1
-Venue   : 1
-Time    : Tue 10:00-11:00
-Section : 01
-Course  : 1
-Venue   : 1
-Time    : Tue 11:00-14:00
-Section : 02
-Course  : 2
-Venue   : 1
-Time    : Tue 14:30-17:30
+Venue   : 01
+Time    : Mon 11:30-14:30
