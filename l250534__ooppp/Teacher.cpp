@@ -17,20 +17,20 @@ Teacher::Teacher(string id, string name, string email)
 }
 
 void Teacher::displayProfile() {
-    cout << "\t\t\t" << endl;
-    cout << "\t\tTEACHER PROFILE\t\t" << endl;
+    cout << endl;
+    cout << "TEACHER PROFILE" << endl;
     cout  << endl;
-    cout << " ID       : " << id << endl;
-    cout << " Name     : " << name << endl;
-    cout << " Email    : " << email << endl;
-    cout << " Avg Score: " << getAverageScore() << "/5" << endl;
-    cout << " Courses  : " << courseCount << endl;
+    cout << "ID              : " << id << endl;
+    cout << "Name            : " << name << endl;
+    cout << "Email           : " << email << endl;
+    cout << "Average Rating  : " << getAverageScore() << "/5" << endl;
+    cout << "Courses         : " << courseCount << endl;
     cout <<  endl;
 }
 
 void Teacher::addFeedback(int rating) 
 {
-    if (feedbackCount < 100) 
+    if (feedbackCount < 150) 
     {
         feedbackScores[feedbackCount] = rating;
         feedbackCount++;

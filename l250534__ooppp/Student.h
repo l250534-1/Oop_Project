@@ -9,10 +9,12 @@ protected:
     string type;
 
 public:
+    //course limit per student =20
     Student(string id, string name, string email, string type);
     virtual double calculateGPA() = 0;
     virtual void   viewTranscript() = 0;
     virtual void   displayProfile() = 0;
+    //defined in student.cpp
     void   enrollinCourse(string courseId);
     bool   isEnrolledIn(string courseId);
     string getType();
