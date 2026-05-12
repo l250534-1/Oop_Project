@@ -1,3 +1,6 @@
+//This Scheduler class is basically an exam scheduling engine.
+// Its job is to take sections + venues + courses 
+// and assign each section a room and time slot without conflicts.
 #include "Scheduler.h"
 #include <iostream>
 #include <fstream>

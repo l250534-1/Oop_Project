@@ -1,3 +1,5 @@
+//schedule class group of a course taught by a teacher that will take an exam in a venue at a scheduled
+
 #include "Section.h"
 #include <iostream>
 using namespace std;
@@ -30,15 +32,25 @@ void Section::assignVenue(string venueId, string timeSlot)
 }
 
 void Section::display() {
-    cout << "  Section  : " << sectionId << endl;
-    cout << "  Course   : " << courseId << endl;
-    cout << "  Teacher  : " << teacherId << endl;
-    cout << "  Venue    : " << venueId << endl;
-    cout << "  Time     : " << timeSlot << endl;
+    cout << "Section  : " << sectionId << endl;
+    cout << "Course   : " << courseId << endl;
+    cout << "Teacher  : " << teacherId << endl;
+    cout << "Venue    : " << venueId << endl;
+    cout << "Time     : " << timeSlot << endl;
 }
 
-string Section::getSectionId() { return sectionId; }
-string Section::getCourseId() { return courseId; }
-string Section::getTeacherId() { return teacherId; }
-string Section::getVenueId() { return venueId; }
-string Section::getTimeSlot() { return timeSlot; }
+string Section::getSectionId() { 
+    return sectionId;
+}
+string Section::getCourseId() {
+    return courseId; 
+}
+string Section::getTeacherId() {
+    return teacherId; 
+}
+string Section::getVenueId() {
+    return venueId;
+}
+string Section::getTimeSlot() {
+    return timeSlot;
+}

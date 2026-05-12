@@ -51,14 +51,17 @@ double ScholarshipStudent::calculateGPA()
     return totalPoints / totalCredits;
 }
 
-void ScholarshipStudent::viewTranscript() {
+void ScholarshipStudent::viewTranscript() 
+{
     cout << endl;
     cout << "TRANSCRIPT: " << name << endl;
     cout  << endl;
-    if (gradeCount == 0) {
+    if (gradeCount == 0) 
+    {
         cout << "No grades yet." << endl;
     }
-    else {
+    else 
+    {
         for (int i = 0; i < gradeCount; i++)
         {
             cout << "Course " << (i + 1) << " : " << grades[i] << "%" << endl;
@@ -66,7 +69,8 @@ void ScholarshipStudent::viewTranscript() {
     }
     cout << "GPA     : " << calculateGPA() << endl;
     cout << "Status  : " << status << endl;
-    if (status == "Probation") {
+    if (status == "Probation") 
+    {
         cout << "!! WARNING: GPA below minimum !!" << endl;
     }
     cout  << endl;
@@ -84,7 +88,9 @@ void ScholarshipStudent::displayProfile() {
     cout  << endl;
 }
 
-string ScholarshipStudent::getStatus() { return status; 
+string ScholarshipStudent::getStatus() { 
+    return status; 
 }
-double ScholarshipStudent::getMinGPA() { return minGPA;
+double ScholarshipStudent::getMinGPA() {
+    return minGPA;
 }

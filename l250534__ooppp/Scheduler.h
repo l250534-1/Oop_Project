@@ -8,11 +8,11 @@ using namespace std;
 class Scheduler {
 private:
     Section sections[100];
-    int     sectionCount;
-    Venue   venues[20];
-    int     venueCount;
-    string  timeSlots[20];
-    int     timeSlotCount;
+    int sectionCount;
+    Venue venues[20];
+    int venueCount;
+    string timeSlots[20];
+    int timeSlotCount;
 
 public:
     Scheduler();
