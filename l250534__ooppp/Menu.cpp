@@ -192,7 +192,7 @@ void Menu::addStudent() {
     } while (id[0] == '-' || !isIdUnique(id));
 
     string name = getStringInput("Enter Name  :");
-    string email = getStringInput("Enter Email :");
+    string email;
 
     do {
         email = getStringInput("Enter Email : ");
@@ -300,7 +300,7 @@ void Menu::addTeacher() {
     } while (id[0] == '-' || !isIdUnique(id));
 
     string name = getStringInput("Enter Name  : ");
-    string email = getStringInput("Enter Email : ");
+    string email;
 
     do {
         email = getStringInput("Enter Email : ");
@@ -348,13 +348,12 @@ void Menu::addCourse() {
     }
 
     string id;
-    while (true)
+    do 
     {
-        id = getStringInput("Enter Course ID  : ");
-        if (findCourse(id) == nullptr)
-            break;
-        cout << "ERROR: Course ID already exists!" << endl;
-    }
+        id = getStringInput("Enter Course ID : ");
+        if (findCourse(id) != nullptr)
+            cout << "ERROR: Course ID already exists! Try another." << endl;
+    } while (findCourse(id) != nullptr);
 
     string title = getStringInput("Enter Title      : ");
    
@@ -421,31 +420,29 @@ void Menu::addVenue() {
         system("pause");
         return;
     }
-
     string roomId;
-    while (true)
+    do 
     {
         roomId = getStringInput("Enter Room ID : ");
-        if (isRoomIdUnique(roomId))
-            break;
-        cout << "ERROR: Room ID already exists!" << endl;
-    }
+        if (!isRoomIdUnique(roomId))
+            cout << "ERROR: Room ID already exists!" << endl;
+    } while (!isRoomIdUnique(roomId));
 
-    int capacity = 0;
-    while (capacity <= 0)
+    int capacity;
+    do
     {
         capacity = getIntInput("Enter Capacity : ");
         if (capacity <= 0)
             cout << "ERROR: Capacity must be greater than 0!" << endl;
-    }
+    } while (capacity <= 0);
 
-    int comp = -1;
-    while (comp != 0 && comp != 1)
+    int comp;
+    do 
     {
         comp = getIntInput("Has Computers? (1=Yes / 0=No): ");
         if (comp != 0 && comp != 1)
             cout << "ERROR: Enter 1 or 0 only!" << endl;
-    }
+    } while (comp != 0 && comp != 1);
 
     venues[venueCount] = Venue(roomId, capacity, comp == 1);
     db.saveVenue(venues[venueCount]);
@@ -664,13 +661,13 @@ void Menu::enterMarks() {
 }
 
 void Menu::viewTranscript() {
-
-    cout << "View Transcript";
+    cout << "View Transcript" << endl;
 
     string id;
     RegularStudent* r = nullptr;
     ScholarshipStudent* s = nullptr;
     ExchangeStudent* e = nullptr;
+
     do {
         id = getStringInput("Enter Student ID : ");
         r = findRegular(id);
@@ -679,39 +676,15 @@ void Menu::viewTranscript() {
         if (r == nullptr && s == nullptr && e == nullptr)
             cout << "ERROR: Student not found! Try again." << endl;
     } while (r == nullptr && s == nullptr && e == nullptr);
-
-
-    RegularStudent* r = findRegular(id);
-    if (r)
-    {
+    
+    if (r != nullptr)
         r->viewTranscript();
-        system("pause");
-        return;
-
-    }
-
-    ScholarshipStudent* s = findScholarship(id);
-    if (s)
-    {
+    else if (s != nullptr)
         s->viewTranscript();
-        system("pause");
-        return;
-    }
-
-    ExchangeStudent* e = findExchange(id);
-    if (e)
-    {
-
+    else if (e != nullptr)
         e->viewTranscript();
-        system("pause");
-        return;
-    }
-
-
-    cout << "ERROR: Student not found!" << endl;
     system("pause");
 }
-
 
 void Menu::leaveFeedback() {
 
