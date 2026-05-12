@@ -9,6 +9,7 @@ DatabaseManager::DatabaseManager()
     teachersFile = "Teachers.txt";
     venuesFile = "Venues.txt";
     sectionsFile = "Sections.txt";
+
 }
 
 string DatabaseManager::getPart(string line, int index)
@@ -182,3 +183,6 @@ void DatabaseManager::loadSections(Section sections[], int& count)
     }
     file.close();
 }
+
+
+

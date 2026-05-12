@@ -26,7 +26,7 @@ Menu::~Menu()//destructor
     for (int i = 0; i < courseCount; i++)
         delete courses[i];
 }
-\
+
 int Menu::getIntInput(string p)
 {
     int value;
@@ -776,12 +776,12 @@ void Menu::studentMenu() {
             cout << "\n ERROR: Invalid choice!" << endl;
     }
 }
-                                                       //Teacher Menu
+                                         //Teacher Menu
 void Menu::teacherMenu() {
     int choice = 0;
     while (choice != 5) {
 
-        cout << "Teacher Menu";
+        cout << "Teacher Menu"<<endl;
         cout << "1. Add Teacher" << endl;
         cout << "2. View All Teachers" << endl;
         cout << "3. Enter Marks" << endl;
@@ -809,7 +809,7 @@ void Menu::courseMenu()
     while (choice != 4) 
     {
 
-        cout << "Course Menu";
+        cout << "Course Menu"<<endl;
         cout << "1. Add Course" << endl;
         cout << "2. View All Courses" << endl;
         cout << "3. Add Venue" << endl;
@@ -833,7 +833,7 @@ void Menu::scheduleMenu() {
     while (choice != 4)
     {
 
-        cout << "Schedule Menu";
+        cout << "Schedule Menu"<<endl;
         cout << "1. Add Section" << endl;
         cout << "2. Generate Exam Schedule" << endl;
         cout << "3. View Schedule" << endl;

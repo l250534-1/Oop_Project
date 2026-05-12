@@ -14,6 +14,6 @@ double Exam::calculateWeightedScore()
 
 void Exam::display() 
 {
-    cout << "  [Exam]       " << rawScore << "/" << maxScore
+    cout << "  [Exam]" << rawScore << "/" << maxScore
         << "  Weighted: " << calculateWeightedScore() << "%" << endl;
 }
