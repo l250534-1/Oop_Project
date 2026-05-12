@@ -1,6 +1,7 @@
 //This Scheduler class is basically an exam scheduling engine.
 // Its job is to take sections + venues + courses 
 // and assign each section a room and time slot without conflicts.
+//section venue time slot (arrays)
 #include "Scheduler.h"
 #include <iostream>
 #include <fstream>
@@ -52,6 +53,7 @@ void Scheduler::addVenue(Venue v)
 	}
 }
 
+//Does this section already use the same room AND the same time
 bool Scheduler::isVenueBooked(string venueId, string timeSlot)
 {
 	for (int i = 0; i < sectionCount; i++)
@@ -73,15 +75,18 @@ string Scheduler::suggestNextSlot(string venueId)
 	return "No slots available";
 }
 
+//Har section ko ek venue (room) + time slot assign karna
 void Scheduler::generateExamSchedule(Course* courses[], int courseCount)
 {
-	cout << "  Generating exam schedule..." << endl;
-	for (int i = 0; i < sectionCount; i++)
+	cout << "Generating exam schedule" << endl;
+	for (int i = 0; i < sectionCount; i++)//Schedule one section at a time
 	{
 		bool assigned = false;
 		Course* matched = nullptr;
 		for (int c = 0; c < courseCount; c++)
 		{
+			//Section A kis course ka hai? CS101? CS102?
+			//if (courseId match ho jaye section ke courseId se)
 			if (courses[c]->getCourseId() == sections[i].getCourseId())
 			{
 				matched = courses[c];
@@ -95,13 +100,16 @@ void Scheduler::generateExamSchedule(Course* courses[], int courseCount)
 				if (!venues[v].canAccommodate(matched->getStudentCount()))
 					continue;
 				LabCourse* lab = dynamic_cast<LabCourse*>(matched);
+				//Check if itslab course hai? if lab and no computers cannot use
 				if (lab != nullptr && !venues[v].getHasComputers())
 					continue;
 			}
+
 			string slot = suggestNextSlot(venues[v].getRoomId());
 			if (slot == "No slots available") 
 				continue;
-			sections[i].assignVenue(venues[v].getRoomId(), slot);
+			sections[i].assignVenue(venues[v].getRoomId(), slot); 
+			//void Section::assignVenue(string venueId, string timeSlot)
 			assigned = true;
 			break;
 		}
@@ -110,7 +118,7 @@ void Scheduler::generateExamSchedule(Course* courses[], int courseCount)
 				<< sections[i].getSectionId() << endl;
 		}
 	}
-	cout << "\t\tSchedule generation complete!" << endl;
+	cout << "Schedule generation complete!" << endl;
 }
 
 void Scheduler::saveSchedule()
@@ -118,10 +126,10 @@ void Scheduler::saveSchedule()
 	ofstream file("exam_schedule.txt");
 	if (!file.is_open())
 	{
-		cout << "  ERROR: Cannot save schedule!" << endl;
+		cout << " ERROR: Cannot save schedule!" << endl;
 		return;
 	}
-	file << "\t\t\t EXAM SCHEDULE\t\t\t\n";
+	file << "EXAM SCHEDULE\n";
 	for (int i = 0; i < sectionCount; i++) {
 		file << "Section : " << sections[i].getSectionId() << "\n";
 		file << "Course  : " << sections[i].getCourseId() << "\n";
@@ -137,12 +145,12 @@ void Scheduler::displaySchedule()
 {
 	if (sectionCount == 0) 
 	{
-		cout << "  No schedule generated yet." << endl;
+		cout << "No schedule generated yet." << endl;
 		return;
 	}
-	cout << "\t\tEXAM SCHEDULE\t\t" << endl;
+	cout <<"EXAM SCHEDULE" << endl;
 	for (int i = 0; i < sectionCount; i++) {
-		sections[i].display();
+		sections[i].display();//display all scheduled section one by one
 		cout << endl;
 	}
 }
