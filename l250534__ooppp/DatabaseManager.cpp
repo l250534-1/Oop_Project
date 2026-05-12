@@ -14,18 +14,19 @@ DatabaseManager::DatabaseManager()
 
 }
 
-string DatabaseManager::getPart(string line, int index)
+string DatabaseManager::getPart(string line, int index)// " | " delimeter
 {
-    int    count = 0;
+    int count = 0;
+    //count is how many things stored,id,name,cours 101|Ali|cs1002
     string part = "";
-    for (int i = 0; i < (int)line.length(); i++)
+    for (int i = 0; i < (int)line.length(); i++) //string function returns the number of characters in the string.
     {
         if (line[i] == '|')
         {
             if (count == index) 
                 return part;
             count++;
-            part = "";
+            part = "";//reset
         }
         else
         {
@@ -37,10 +38,13 @@ string DatabaseManager::getPart(string line, int index)
     return "";
 }
 
-void DatabaseManager::saveTeacher(Teacher& t) 
+void DatabaseManager::saveTeacher(Teacher& t) //by refrence passed(no copy)
 {
-    ofstream file(teachersFile, ios::app);
-    if (file.is_open()) {
+    ofstream file(teachersFile, ios::app);//file is obj name
+    //filename, mode append adds data at END of file
+    //created (or overwritten)
+    if (file.is_open()) 
+    {
         file << t.getId() << "|"
             << t.getName() << "|"
             << t.getEmail() << "|"
@@ -49,9 +53,11 @@ void DatabaseManager::saveTeacher(Teacher& t)
     }
 }
 
-void DatabaseManager::saveStudent(string id, string name, string email, string type, string extra) {
+void DatabaseManager::saveStudent(string id, string name, string email, string type, string extra)
+{
     ofstream file(studentsFile, ios::app);
-    if (file.is_open()) {
+    if (file.is_open()) 
+    {
         file << id << "|"
             << name << "|"
             << email << "|"
@@ -63,18 +69,19 @@ void DatabaseManager::saveStudent(string id, string name, string email, string t
 
 void DatabaseManager::loadTeachers(Teacher teachers[], int& count) 
 {
-    ifstream file(teachersFile);
+    ifstream file(teachersFile);//read data
     count = 0;
     if (!file.is_open())
         return;
     string line;
-    while (getline(file, line) && count < 50)
+    while (getline(file, line) && count < 50)//till EOF
     {
         if (line.empty()) 
             continue;
         string id = getPart(line, 0);
         string name = getPart(line, 1);
         string email = getPart(line, 2);
+        string avgStr = getPart(line, 3);
         teachers[count] = Teacher(id, name, email);
         count++;
     }
@@ -95,7 +102,10 @@ void DatabaseManager::loadStudents(Student* students[], int& count)
     {
         string id = getPart(line, 0);
         string name = getPart(line, 1);
-        string type = getPart(line, 2);
+        string email = getPart(line, 2);
+        string type = getPart(line, 3);
+        string extra = getPart(line, 4);
+
 
         if (type == "Regular")
         {
