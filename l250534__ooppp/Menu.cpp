@@ -529,28 +529,31 @@ void Menu::registerStudentToCourse() {
         return;
     }
 
-    string studentId = getStringInput("Enter Student ID : ");
-    string courseId = getStringInput("Enter Course ID  : ");
+    string studentId;
+    do {
+        studentId = getStringInput("Enter Student ID : ");
+        bool exists = findRegular(studentId) != nullptr ||
+            findScholarship(studentId) != nullptr ||
+            findExchange(studentId) != nullptr;
+        if (!exists)
+            cout << "ERROR: Student not found! Try again." << endl;
+        else
+            break;
+    } while (true);
 
-    // Check student exists
-    bool studentExists = findRegular(studentId) != nullptr ||
-        findScholarship(studentId) != nullptr ||
-        findExchange(studentId) != nullptr;
+    string courseId;
+    do {
+        courseId = getStringInput("Enter Course ID : ");
+        if (findCourse(courseId) == nullptr)
+            cout << "ERROR: Course not found! Try again." << endl;
+        else
+            break;
+    } while (true);
 
-    if (!studentExists)
-    {
-        cout << "ERROR: Student ID not found!" << endl;
-        system("pause");
-         return;
-    }
+   
 
     Course* course = findCourse(courseId);
-    if (course == nullptr)
-    {
-        cout << "ERROR: Course not found!" << endl;
-        system("pause");
-        return;
-    }
+    
 
     if (course->isStudentEnrolled(studentId))
     {
@@ -588,15 +591,15 @@ void Menu::enterMarks() {
         system("pause");
         return;
     }
-
-    string courseId = getStringInput("  Enter Course ID: ");
-    Course* course = findCourse(courseId);
-    if (course == nullptr)
+    string courseId;
+    Course* course;
+    do
     {
-        cout << "ERROR: Course not found!" << endl;
-        system("pause");
-        return;
-    }
+        courseId = getStringInput("Enter Course ID : ");
+        course = findCourse(courseId);
+        if (course == nullptr)
+            cout << "ERROR: Course not found! Try again." << endl;
+    } while (course == nullptr);
 
     cout << "\nAssessment Type:" << endl;
     cout << "1 = Exam" << endl;
@@ -664,7 +667,19 @@ void Menu::viewTranscript() {
 
     cout << "View Transcript";
 
-    string id = getStringInput("Enter Student ID: ");
+    string id;
+    RegularStudent* r = nullptr;
+    ScholarshipStudent* s = nullptr;
+    ExchangeStudent* e = nullptr;
+    do {
+        id = getStringInput("Enter Student ID : ");
+        r = findRegular(id);
+        s = findScholarship(id);
+        e = findExchange(id);
+        if (r == nullptr && s == nullptr && e == nullptr)
+            cout << "ERROR: Student not found! Try again." << endl;
+    } while (r == nullptr && s == nullptr && e == nullptr);
+
 
     RegularStudent* r = findRegular(id);
     if (r)
@@ -709,13 +724,14 @@ void Menu::leaveFeedback() {
         return;
     }
 
-    string id = getStringInput("Enter Teacher ID: ");
-    Teacher* teacher = findTeacher(id);
-    if (teacher == nullptr) {
-        cout << "ERROR: Teacher not found!" << endl;
-        system("pause");
-        return;
-    }
+    string id;
+    Teacher* teacher;
+    do {
+        id = getStringInput("Enter Teacher ID : ");
+        teacher = findTeacher(id);
+        if (teacher == nullptr)
+            cout << "ERROR: Teacher not found! Try again." << endl;
+    } while (teacher == nullptr);
 
     int rating = 0;
     while (rating < 1 || rating > 5)
