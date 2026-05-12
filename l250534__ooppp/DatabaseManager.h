@@ -5,6 +5,12 @@
 #include "ExchangeStudent.h"
 #include "Venue.h"
 #include "Section.h"
+#include "CoreCourse.h"
+#include "ElectiveCourse.h"
+#include "LabCourse.h"
+#include "Exam.h"
+#include "Quiz.h"
+#include "Assignment.h"
 #include <fstream>
 #include<string>
 using namespace std;
@@ -30,6 +36,10 @@ public:
     void loadRegularStudents(RegularStudent students[], int& count);
     void loadScholarshipStudents(ScholarshipStudent students[], int& count);
     void loadExchangeStudents(ExchangeStudent students[], int& count);
+    void saveCourse(Course* c);
+    void loadCourses(Course* courses[], int& count);
+    void saveAssessment(string courseId, Assessment* a);
+    void loadAssessments(Course* courses[], int courseCount);
   
 };
 
