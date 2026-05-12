@@ -9,6 +9,8 @@ DatabaseManager::DatabaseManager()
     teachersFile = "Teachers.txt";
     venuesFile = "Venues.txt";
     sectionsFile = "Sections.txt";
+    coursesFile = "Courses.txt";
+    assessmentsFile = "assessments.txt";
 
 }
 
@@ -231,10 +233,12 @@ void DatabaseManager::loadScholarshipStudents(ScholarshipStudent students[], int
 void DatabaseManager::loadExchangeStudents(ExchangeStudent students[], int& count) {
     ifstream file(studentsFile);
     count = 0;
-    if (!file.is_open()) return;
+    if (!file.is_open())
+        return;
     string line;
     while (getline(file, line) && count < 50) {
-        if (line.empty()) continue;
+        if (line.empty()) 
+            continue;
         string id = getPart(line, 0);
         string name = getPart(line, 1);
         string email = getPart(line, 2);  
@@ -248,7 +252,7 @@ void DatabaseManager::loadExchangeStudents(ExchangeStudent students[], int& coun
 }
 
 void DatabaseManager::saveCourse(Course* c) {
-    ofstream file("Courses.txt", ios::app);
+    ofstream file(coursesFile, ios::app);
     if (file.is_open()) {
         file << c->getCourseId() << "|"
             << c->getTitle() << "|"
@@ -259,12 +263,14 @@ void DatabaseManager::saveCourse(Course* c) {
 }
 
 void DatabaseManager::loadCourses(Course* courses[], int& count) {
-    ifstream file("Courses.txt");
+    ifstream file(coursesFile);
     count = 0;
-    if (!file.is_open()) return;
+    if (!file.is_open())
+        return;
     string line;
     while (getline(file, line) && count < 50) {
-        if (line.empty()) continue;
+        if (line.empty()) 
+            continue;
         string id = getPart(line, 0);
         string title = getPart(line, 1);
         string teacher = getPart(line, 2);
@@ -281,7 +287,7 @@ void DatabaseManager::loadCourses(Course* courses[], int& count) {
 }
 
 void DatabaseManager::saveAssessment(string courseId, Assessment* a) {
-    ofstream file("assessments.txt", ios::app);
+    ofstream file(assessmentsFile, ios::app);
     if (file.is_open()) {
         file << courseId << "|"
             << a->getStudentId() << "|"
@@ -295,7 +301,7 @@ void DatabaseManager::saveAssessment(string courseId, Assessment* a) {
 
 void DatabaseManager::loadAssessments(Course* courses[], int courseCount)
 {
-    ifstream file("assessments.txt");
+    ifstream file(assessmentsFile);
     if (!file.is_open()) return;
 
     string line;
