@@ -634,7 +634,8 @@ void Menu::enterMarks() {
     cout << "3 = Assignment" << endl;
 
     int type = 0;
-    while (type < 1 || type > 3) {
+    while (type < 1 || type > 3)
+    {
         type = getIntInput("Enter type (1-3): ");
         if (type < 1 || type > 3)
             cout << "ERROR: Enter 1, 2, or 3!" << endl;
@@ -651,7 +652,8 @@ void Menu::enterMarks() {
 
     double raw = -1, max = -1, wt = -1;
 
-    while (raw < 0) {
+    while (raw < 0) 
+    {
         raw = getDoubleInput("Enter raw score : ");
         if (raw < 0)
             cout << "ERROR: Score cannot be negative!" << endl;
@@ -696,7 +698,7 @@ void Menu::enterMarks() {
     }
     cout << endl;
     course->displayAssessments(studentId);
-    double finalGrade = course->calculateFinalGrade(studentId);
+    double finalGrade = course->calculateFinalGrade(studentId);//rtp
     cout << "\nFinal Grade: " << finalGrade << "%" << endl;
 
 

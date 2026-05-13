@@ -31,7 +31,7 @@ private:
     int sectionCount;
 
     DatabaseManager db;
-    Scheduler scheduler;
+    Scheduler scheduler;//aggregation
 public:
     Menu();
     ~Menu();
@@ -64,5 +64,5 @@ public:
     void teacherMenu();
     void courseMenu();
     void scheduleMenu();
-    double percentageToGPA(double percent);
+    //double percentageToGPA(double percent);
 };

@@ -46,6 +46,7 @@ void ExchangeStudent::viewTranscript() {
 }
 double ExchangeStudent::calculateGPA()
 {
+    cout << "No gpa" << endl;
     return 0.0;
 }
 
