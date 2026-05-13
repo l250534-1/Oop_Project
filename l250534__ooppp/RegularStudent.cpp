@@ -18,16 +18,18 @@ RegularStudent::RegularStudent(string id, string name, string email)
     totalCredits = 0;
 }
 
-void RegularStudent::addGrade(double weightedpoints,int credits) 
-{
-    if (gradeCount < 20) 
-    {
-        grades[gradeCount] = weightedpoints;
-        gradeCount++;
-        totalPoints += weightedpoints;
-        totalCredits += credits;
-    }
-}
+//void RegularStudent::addGrade(double weightedpoints,int credits) 
+//{
+//    if (gradeCount < 20)
+//    {
+//        grades[gradeCount] = weightedpoints;
+//        gradeCount++;
+//        totalPoints += weightedpoints;
+//        totalCredits += credits;
+//    }
+//    else
+//        cout << "20 courses enrolled" << endl;
+//}
 
 
 
@@ -39,13 +41,7 @@ void RegularStudent::viewTranscript() {
     {
     cout << "No grades yet." << endl;
     }
-    /*else 
-    {
-        for (int i = 0; i < gradeCount; i++)
-        {
-            cout << "Course " << (i + 1) << " : " << grades[i]  << endl;
-        }
-    }*/
+  
     cout << "  GPA     : " << calculateGPA() << endl;
     cout  << endl;
 }
@@ -67,4 +63,27 @@ void RegularStudent::displayProfile() {
     cout << "Email : " << email << endl;
     cout << "GPA   : " << calculateGPA() << endl;
     cout <<endl;
+}
+
+void RegularStudent::addGrade(double weightedPoints, int credits, string courseId)
+{
+   
+    for (int i = 0; i < gradeCount; i++)
+    {
+        if (gradeCourses[i] == courseId)
+        {
+            totalPoints -= grades[i];      
+            grades[i] = weightedPoints;  
+            totalPoints += weightedPoints;  
+            return;
+        }
+    }
+    if (gradeCount < 20)
+    {
+        gradeCourses[gradeCount] = courseId;
+        grades[gradeCount] = weightedPoints;
+        gradeCount++;
+        totalPoints += weightedPoints;
+        totalCredits += credits;
+    }
 }

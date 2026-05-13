@@ -202,8 +202,11 @@ void Menu::addStudent() {
     do {
         email = getStringInput("Enter Email : ");
         bool found = false;
-        for (int i = 0; i < (int)email.length(); i++) {
-            if (email[i] == '@') { found = true; break; }
+        for (int i = 0; i < (int)email.length(); i++)
+        {
+            if (email[i] == '@') {
+                found = true;
+            break; }
         }
         if (!found)
             cout << "ERROR: Invalid email! Must contain @" << endl;
@@ -231,7 +234,7 @@ void Menu::addStudent() {
         cout << "\nRegular Student added!" << endl;
     }
     else if (type == 2) {
-        double minGPA = 0;
+        double minGPA = 2;
       
         do
         {
@@ -287,7 +290,7 @@ void Menu::viewAllStudents() {
 void Menu::addTeacher() {
 
     cout << "Add Teacher";
-
+    cout << endl;
     if (teacherCount >= 50)
     {
         cout << "  ERROR: Maximum teachers reached!" << endl;
@@ -298,6 +301,7 @@ void Menu::addTeacher() {
     do
     {
         id = getStringInput("Enter ID : ");
+        cout << endl;
         if (id[0] == '-')
             cout << "ERROR: ID cannot be negative!" << endl;
         else if (!isIdUnique(id))
@@ -324,7 +328,7 @@ void Menu::addTeacher() {
 void Menu::viewAllTeachers()
 {
 
-    cout<<"All Teachers"<<endl;
+    cout<<"All Teacher"<<endl;
     if (teacherCount == 0)
     {
         cout << "  No teachers found." << endl;
@@ -343,7 +347,7 @@ void Menu::viewAllTeachers()
 
 void Menu::addCourse() {
 
-    cout << "Add Course";
+    cout << "Add Course"<<endl;
 
     if (courseCount >= 50)
     {
@@ -366,6 +370,7 @@ void Menu::addCourse() {
     do
     {
         teacherId = getStringInput("Enter Teacher ID : ");
+            cout << endl;;
         if (findTeacher(teacherId) == nullptr)
             cout << "ERROR: Teacher not found! Enter valid Teacher ID." << endl;
     } while (findTeacher(teacherId) == nullptr);
@@ -399,7 +404,7 @@ void Menu::addCourse() {
 
 void Menu::viewAllCourses() {
 
-    cout << "All Courses" << endl;
+    cout << "All Courses;" << endl;
     if (courseCount == 0)
     {
         cout << "No courses found." << endl;
@@ -419,7 +424,7 @@ void Menu::viewAllCourses() {
 
 void Menu::addVenue() {
 
-    cout << "Add Venue";
+    cout << "Add Venue" << endl;;
 
     if (venueCount >= 20) {
         cout << "ERROR: Maximum venues reached!" << endl;
@@ -462,7 +467,7 @@ void Menu::addVenue() {
 void Menu::addSection()
 {
 
-    cout << "Add Section";
+    cout << "Add Section" << endl;;
 
     if (sectionCount >= 100)
     {
@@ -480,6 +485,7 @@ void Menu::addSection()
     string sectionId;
     do {
         sectionId = getStringInput("  Enter Section ID : ");
+        cout << endl;
         bool duplicate = false;
         for (int i = 0; i < sectionCount; i++) {
             if (sections[i].getSectionId() == sectionId) {
@@ -496,6 +502,7 @@ void Menu::addSection()
     string courseId;
     do {
         courseId = getStringInput("  Enter Course ID  : ");
+        cout << endl;
         if (findCourse(courseId) == nullptr)
             cout << "  ERROR: Course not found! Enter a valid Course ID." << endl;
         else
@@ -506,6 +513,7 @@ void Menu::addSection()
     string teacherId;
     do {
         teacherId = getStringInput("  Enter Teacher ID : ");
+        cout << endl;
         if (findTeacher(teacherId) == nullptr)
             cout << "  ERROR: Teacher not found! Enter a valid Teacher ID." << endl;
         else
@@ -522,9 +530,11 @@ void Menu::addSection()
     system("pause");
 }
 
-void Menu::registerStudentToCourse() {
+void Menu::registerStudentToCourse()
+{
 
-    cout << "Register Student to Course";
+
+    cout << "Register Student to Course"<<endl;
 
     if (courseCount == 0)
     {
@@ -554,11 +564,8 @@ void Menu::registerStudentToCourse() {
             break;
     } while (true);
 
-   
-
     Course* course = findCourse(courseId);
-    
-
+   
     if (course->isStudentEnrolled(studentId))
     {
         cout << "ERROR: Student already enrolled in this course!" << endl;
@@ -677,6 +684,7 @@ void Menu::enterMarks() {
     }
     else if (type == 2) {
         Quiz* qz = new Quiz(studentId, raw, max, wt);
+        cout << "DEBUG studentId stored: " << qz->getStudentId() << endl; // temp
         course->addAssessment(qz);
         db.saveAssessment(courseId, qz);
     }
@@ -719,11 +727,10 @@ void Menu::enterMarks() {
 
     RegularStudent* r = findRegular(studentId);
     if (r != nullptr)
-        r->addGrade(weightedPoints, credits);
-
+        r->addGrade(weightedPoints, credits, courseId);
     ScholarshipStudent* s = findScholarship(studentId);
     if (s != nullptr)
-        s->addGrade(weightedPoints, credits);
+        s->addGrade(weightedPoints, credits, courseId);
     system("pause");
 }
 
@@ -766,7 +773,7 @@ void Menu::viewTranscript() {
 
 void Menu::leaveFeedback() {
 
-    cout << "Leave Feedback for Teacher";
+    cout << "Leave Feedback for Teacher"<<endl;
 
     if (teacherCount == 0)
     {
@@ -800,7 +807,7 @@ void Menu::leaveFeedback() {
 
 void Menu::generateSchedule() {
 
-    cout << "Generate Exam Schedule";
+    cout << "Generate Exam Schedule"<<endl;
 
     if (sectionCount == 0)
     {
@@ -840,7 +847,8 @@ void Menu::viewSchedule()
                                               //Student Menu
 void Menu::studentMenu() {
     int choice = 0;
-    while (choice != 5) {
+    while (choice != 5)
+    {
 
         cout << "Student Menu\n";
         cout << "1. Add Student" << endl;

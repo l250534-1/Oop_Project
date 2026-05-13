@@ -1,8 +1,8 @@
-//Scholarship Student: Must maintain a minimum GPA; otherwise, their status flag changes to "Probation."
+﻿//Scholarship Student: Must maintain a minimum GPA; otherwise, their status flag changes to "Probation."
 #include "ScholarshipStudent.h"
 #include <iostream>
 using namespace std;
-
+//grade is Final % for course → convert → GPA → multiply by credits
 ScholarshipStudent::ScholarshipStudent()
     : Student("", "", "", "Scholarship") 
 {
@@ -19,19 +19,34 @@ ScholarshipStudent::ScholarshipStudent(string id, string name, string email, dou
     this->minGPA = minGPA;
     gradeCount = 0;
     status = "Active";
+    totalPoints = 0;
+    totalCredits = 0;
 }
 
-void ScholarshipStudent::addGrade(double weightedPoints, int credits)
+void ScholarshipStudent::addGrade(double weightedPoints, int credits, string courseId)
 {
+    for (int i = 0; i < gradeCount; i++)
+    {
+        if (gradeCourses[i] == courseId)
+        {
+            totalPoints -= grades[i];
+            grades[i] = weightedPoints;
+            totalPoints += weightedPoints;
+
+            checkStatus();   
+            return;
+        }
+    }
+
     if (gradeCount < 20)
     {
+        gradeCourses[gradeCount] = courseId;
         grades[gradeCount] = weightedPoints;
         gradeCount++;
-
         totalPoints += weightedPoints;
         totalCredits += credits;
 
-        checkStatus();
+        checkStatus();  
     }
 }
 
@@ -59,13 +74,6 @@ void ScholarshipStudent::viewTranscript()
     if (gradeCount == 0) 
     {
         cout << "No grades yet." << endl;
-    }
-    else 
-    {
-        for (int i = 0; i < gradeCount; i++)
-        {
-            cout << "Course " << (i + 1) << " : " << grades[i] << "%" << endl;
-        }
     }
     cout << "GPA     : " << calculateGPA() << endl;
     cout << "Status  : " << status << endl;
