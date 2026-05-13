@@ -1,3 +1,2 @@
-44|44|@|Scholarship|2.000000
-67|67|@|Exchange|
-69|69|@|Scholarship|3.000000
+534|Meerab|meerab@gmail.com|Regular|
+1|meerab|@|Regular|

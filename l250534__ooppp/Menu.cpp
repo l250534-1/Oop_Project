@@ -642,7 +642,8 @@ void Menu::enterMarks() {
 
     // Lab courses cannot have exams
     LabCourse* lab = dynamic_cast<LabCourse*>(course);
-    if (lab != nullptr && type == 1) {
+    if (lab != nullptr && type == 1)
+    {
         cout << "ERROR: Lab courses cannot have Exams!" << endl;
         system("pause");
         return;
@@ -699,7 +700,7 @@ void Menu::enterMarks() {
     cout << "\nFinal Grade: " << finalGrade << "%" << endl;
 
 
-    double gpaPoints = percentageToGPA(finalGrade);
+    //double gpaPoints = percentageToGPA(finalGrade);
 
  
 
@@ -734,16 +735,16 @@ void Menu::enterMarks() {
     system("pause");
 }
 
-double Menu::percentageToGPA(double percent)
-{
-    if (percent >= 85) return 4.0;
-    else if (percent >= 80) return 3.7;
-    else if (percent >= 75) return 3.3;
-    else if (percent >= 70) return 3.0;
-    else if (percent >= 65) return 2.7;
-    else if (percent >= 60) return 2.3;
-    else return 0.0;
-}
+//double Menu::percentageToGPA(double percent)
+//{
+//    if (percent >= 85) return 4.0;
+//    else if (percent >= 80) return 3.7;
+//    else if (percent >= 75) return 3.3;
+//    else if (percent >= 70) return 3.0;
+//    else if (percent >= 65) return 2.7;
+//    else if (percent >= 60) return 2.3;
+//    else return 0.0;
+//}
 
 void Menu::viewTranscript() {
     cout << "View Transcript" << endl;

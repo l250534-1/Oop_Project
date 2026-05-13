@@ -1,10 +1,12 @@
-//schedule class group of a course taught by a teacher that will take an exam in a venue at a scheduled
+//schedule class group of a course taught by a 
+// teacher that will take an exam in a venue at a scheduled
 
 #include "Section.h"
 #include <iostream>
 using namespace std;
 
-Section::Section() {
+Section::Section() 
+{
     sectionId = "";
     courseId = "";
     teacherId = "";
@@ -12,7 +14,8 @@ Section::Section() {
     timeSlot = "Unassigned";
 }
 
-Section::Section(string sectionId, string courseId, string teacherId) {
+Section::Section(string sectionId, string courseId, string teacherId) 
+{
     this->sectionId = sectionId;
     this->courseId = courseId;
     this->teacherId = teacherId;

@@ -7,7 +7,7 @@
 using namespace std;
 class Scheduler {
 private:
-    Section* sections[100];
+    Section* sections[100];//aggregation
     int sectionCount;
     Venue venues[20];
     int venueCount;

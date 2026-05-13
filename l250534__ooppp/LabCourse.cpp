@@ -2,7 +2,8 @@
 using namespace std;
 
 LabCourse::LabCourse(string courseId, string title, string teacherId)
-    : Course(courseId, title, teacherId, "Lab") {
+    : Course(courseId, title, teacherId, "Lab")
+{
     requiresComputers = true;
 }
 
@@ -22,5 +23,9 @@ double LabCourse::calculateFinalGrade(string studentId)
     return total;
 }
 
-int  LabCourse::getExamDuration() { return 0; }
-bool LabCourse::getRequiresComputers() { return requiresComputers; }
+int  LabCourse::getExamDuration() {
+    return 0;
+}
+bool LabCourse::getRequiresComputers() { 
+    return requiresComputers;
+}

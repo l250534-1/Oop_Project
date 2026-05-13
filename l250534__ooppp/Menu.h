@@ -15,7 +15,7 @@
 
 class Menu {
 private:
-    Teacher teachers[50];
+    Teacher teachers[50];//composition
     int teacherCount;
     RegularStudent regularStudents[50];
     int regularCount;
@@ -23,7 +23,7 @@ private:
     int scholarshipCount;
     ExchangeStudent exchangeStudents[50];
     int exchangeCount;
-    Course* courses[50];
+    Course* courses[50];//composition
     int courseCount;
     Venue venues[20];
     int venueCount;

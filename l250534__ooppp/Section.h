@@ -13,9 +13,9 @@ private:
 public:
     Section();
     Section(string sectionId, string courseId, string teacherId);
-    bool   hasTimeConflict(string otherTimeSlot);
-    void   assignVenue(string venueId, string timeSlot);
-    void   display();
+    bool hasTimeConflict(string otherTimeSlot);
+    void assignVenue(string venueId, string timeSlot);
+    void display();
     string getSectionId();
     string getCourseId();
     string getTeacherId();

@@ -1,7 +1,1 @@
-1|1|100|Unassigned|Unassigned
-3|1|100|Unassigned|Unassigned
-5|1|100|Unassigned|Unassigned
-90|1|100|Unassigned|Unassigned
-80|1|100|Unassigned|Unassigned
-70|1|101|Unassigned|Unassigned
-40|1|100|Unassigned|Unassigned
+3|100|123|Unassigned|Unassigned

@@ -35,8 +35,8 @@ Scheduler::Scheduler()
 	timeSlots[16] = "Fri    8:00-11:00";
 	timeSlots[17] = "Fri    14:30-16:30";
 	timeSlotCount = 18;
-
 }
+
 void Scheduler::addSection(Section* s)
 {
 	if (sectionCount < 100)
@@ -77,14 +77,13 @@ string Scheduler::suggestNextSlot(string venueId)
 }
 
 
-
 //Har section ko ek venue (room) + time slot assign karna
 void Scheduler::generateExamSchedule(Course* courses[], int courseCount)
 {
 	cout << "Generating exam schedule" << endl;
 	for (int i = 0; i < sectionCount; i++)//Schedule one section at a time
 	{
-		cout << "SECTION DEBUG: " << sections[i]->getSectionId() << endl;
+		/*cout << "SECTION DEBUG: " << sections[i]->getSectionId() << endl;*/
 		cout << "Course ID   : " << sections[i]->getCourseId() << endl;
 		cout << "Teacher ID  : " << sections[i]->getTeacherId() << endl;
 		cout << "Venue Count : " << venueCount << endl;
@@ -123,7 +122,7 @@ void Scheduler::generateExamSchedule(Course* courses[], int courseCount)
 			}
 		}
 	}
-;
+
 	cout << "Schedule generation complete!" << endl;
 }
 
@@ -137,7 +136,8 @@ void Scheduler::saveSchedule()
 		return;
 	}
 	file << "EXAM SCHEDULE\n";
-	for (int i = 0; i < sectionCount; i++) {
+	for (int i = 0; i < sectionCount; i++)
+	{
 		file << "Section : " << sections[i]->getSectionId() << "\n";
 		file << "Course  : " << sections[i]->getCourseId() << "\n";
 		file << "Venue   : " << sections[i]->getVenueId() << "\n";
@@ -145,7 +145,7 @@ void Scheduler::saveSchedule()
 		cout << endl;
 	}
 	file.close();
-	cout << "  Schedule saved to exam_schedule.txt!" << endl;
+	cout << "Schedule saved to exam_schedule.txt!" << endl;
 }
 
 void Scheduler::displaySchedule() 
@@ -156,7 +156,8 @@ void Scheduler::displaySchedule()
 		return;
 	}
 	cout <<"EXAM SCHEDULE" << endl;
-	for (int i = 0; i < sectionCount; i++) {
+	for (int i = 0; i < sectionCount; i++)
+	{
 		sections[i]->display();//display all scheduled section one by one
 		cout << endl;
 	}
