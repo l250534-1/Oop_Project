@@ -4,6 +4,17 @@ A terminal-based University Management System developed in C++
 as an Object-Oriented Programming project.
 The system automates common academic office operations such as student management, course registration,
 grading, scheduling, and teacher feedback using a file-based database.
+<h2> Screenshots</h2>
+
+<p align="center">
+  <img src="screenshots/Course%20Menu.png" width="48%">
+  <img src="screenshots/Student%20Menu.png" width="48%">
+</p>
+
+<p align="center">
+  <img src="screenshots/Teacher%20Menu.png" width="48%">
+  <img src="screenshots/Schedule%20Menu.png" width="48%">
+</p>
 
 ## Features
 
